@@ -1,0 +1,27 @@
+# 忽略 tex编译过程生成的文件
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.bbl
+*.blg
+*.bcf
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.lof
+*.lot
+*.acn
+*.alg
+*.aux
+*.run.xml
+
+# 忽略 claude code 生成的文件
+/.claude
