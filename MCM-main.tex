@@ -1,52 +1,106 @@
 \documentclass{mcmthesis}
-\mcmsetup{CTeX = false,    % 使用 CTeX 套装时，设置为 true
-          tcn = {0000000},  % 参赛队编号
-          problem = \textcolor{red}{A}, % 参赛问题编号 A, B, C, D
+% 关键修改：CTeX = true 启用中文支持
+\mcmsetup{CTeX = true, tcn = {112233}, problem = \textcolor{red}{A},
           sheet = true, titleinsheet = true, keywordsinsheet = true,
           titlepage = false, abstract = false}
 
-\usepackage{newtxtext}     % \usepackage{palatino} % 使用 Palatino 字体
-\usepackage{newtxmath}     % \usepackage{mathpazo} % 使用 Pazo Math 字体
-\usepackage[style=apa,backend=biber]{biblatex} % 引用管理
+% 必要的中文支持包
+\usepackage{xeCJK}
+\usepackage{fontspec}
+\setCJKmainfont{SimSun} % Windows系统
+% \setCJKmainfont{Songti SC} % macOS系统
+% \setCJKmainfont{Noto Serif CJK SC} % Linux/跨平台
+
+% 英文字体设置
+\usepackage{newtxtext}
+\usepackage{newtxmath}
+\usepackage[style=apa,backend=biber]{biblatex}
 \addbibresource{texfile/reference.bib}
+\usepackage{tocloft}
+\setlength{\cftbeforesecskip}{6pt}
+\renewcommand{\contentsname}{\hspace*{\fill}\Large\bfseries Contents \hspace*{\fill}}
 
-\usepackage{tocloft}    % 目录设置
-\setlength{\cftbeforesecskip}{6pt} % 目录项之间的间距
-\renewcommand{\contentsname}{\hspace*{\fill}\Large\bfseries Contents \hspace*{\fill}}   % 目录标题居中加粗
+% 标题要宏大且具体，体现方法论
+\title{Water Future: A Hybrid Framework for Prediction, Attribution, and Pricing Strategy}
+\date{\today}
 
-
-\title{Enjoy a Cozy and Green Bath} %论文标题
-
-% \author{\small \href{http://www.latexstudio.net/}
-%   {\includegraphics[width=7cm]{mcmthesis-logo}}}
-\date{\today} % 日期，默认今天
-
-
-%文档开始
 \begin{document}
 
-	\input{texfile/1abstract}%摘要+目录  abstract.tex
+    % 1. 摘要 (Summary Sheet)
+    % 核心得分点：在此处加粗展示Q1的预测值和Q4的定价方案
+    \input{texfile/1abstract}
 
-	\input{texfile/2ProblemRestatement}%插入问题重述   ProblemRestatement.tex
+    \newpage
+    \maketitle  % 生成 Summary Sheet
+    \tableofcontents  % 生成目录
+    \newpage
 
-	\input{texfile/3ProblemAnalysis}%插入问题分析    ProblemAnalysis.tex
+    % 2. 问题重述与背景 (Problem Restatement)
+    \section{问题重述与背景分析}
+    \input{texfile/2_1ProblemRestatement}       % 流程图放在这里
+    \input{texfile/2_2BackgroundAnalysis}       % 文献综述：前人是怎么研究水价的
 
-	\input{texfile/4AssumptionAndNotations}%插入模型假设及符号说明  AssumptionAndNotations.tex
+    % 3. 数据全景与预处理 (Data - 采纳Qwen建议，统一处理)
+    \section{数据全景与预处理}
+    \input{texfile/3_1DataSources}              % 数据来源表 (Official Statistics etc.)
+    \input{texfile/3_2DataCleaning}             % 缺失值插补 (Interpolation/KNN)
+    \input{texfile/3_3ExploratoryAnalysis}      % 核心图表：相关性热力图 + 历史趋势图
 
-	\input{texfile/5MakeModel} %插入模型的建立与求解   MakeModel.tex
+    % 4. 假设与符号
+    \section{模型假设与符号说明}
+    \input{texfile/4_1Assumptions}
+    \input{texfile/4_2Notations}
 
-    % \input{texfile/6ModelModification} %插入模型的修正与对比   ModelModification.tex
+    % ===== 问题1：预测 (Prediction) =====
+    \section{全国用水量短期预测 (2017-2021)}
+    \input{texfile/5_1ModelSelection}           % 为什么用组合模型 (ARIMA+LSTM)
+    \input{texfile/5_2ModelImplementation}      % 训练过程
+    \input{texfile/5_3ResultsAndVerification}   % 【微调】直接在这里放误差图 (MAPE)，证明模型准
 
-	\input{texfile/6ErrorAnalysis} %插入误差分析   ErrorAnalysis.tex
+    % ===== 问题2：归因 (Attribution) =====
+    \section{用水量影响因素识别}
+    \input{texfile/6_1FeatureSelectionModel}    % 随机森林 / Lasso回归
+    \input{texfile/6_2FactorRanking}            % 给出排名：人口 > GDP > ...
+    \input{texfile/6_3Interpretation}           % 经济学解释
 
-	\input{texfile/7ModelEvaluation} %插入模型评价	ModelEvaluation.tex
+    % ===== 问题3：机制 (Mechanism) - 采纳Qwen建议，分开建模 =====
+    \section{水价弹性分析：工业 vs 居民}
+    \input{texfile/7_1IndustrialElasticity}     % 工业：重点谈效率倒逼机制
+    \input{texfile/7_2ResidentialElasticity}    % 居民：重点谈收入占比 (Affordability)
+    \input{texfile/7_3ComparativeDiscussion}    % 对比：谁对价格更敏感？
 
-	\input{texfile/18Reference} %插入参考文献   Reference.tex
+    % ===== 问题4：策略 (Strategy) =====
+    \section{农业用水最优定价策略}
+    \input{texfile/8_1MultiObjectiveModel}      % 目标：节水 vs 农民收入
+    \input{texfile/8_2OptimizationSolving}      % 求解 Pareto 前沿
+    \input{texfile/8_3FinalPricingScheme}       % 最终产出：阶梯水价表 (Tiered Pricing)
 
-	\input{texfile/19Appendix} %插入附录   Appendix.tex
+    % 9. 灵敏度与稳健性 (Validation - 采纳Qwen建议，统一检验)
+    \section{敏感性分析与模型稳健性}
+    \input{texfile/9_1PriceSensitivity}         % Q4重点：如果农民变穷了，定价还合理吗？
+    \input{texfile/9_2ParameterStability}       % 模型参数波动测试
+    \input{texfile/9_3SystemRobustness}         % 极端气候下的压力测试
 
-    \input{texfile/20UseAI} % 插入 AI 使用说明 UseAI.tex
+    % 10. 评价与推广
+    \section{模型评价与推广价值}
+    \input{texfile/10StrengthsWeaknesses}
 
+    % 11. 政策建议 (Policy - 独立成章)
+    \section{政策建议与实施路径}
+    \input{texfile/11PolicyRecommendations}     % 具体落地：补贴、技术引进、阶梯定价实施细则
+
+    % 12. 参考文献
+    \newpage
+    \input{texfile/12Reference}
+
+    % 13. 附录
+    \newpage
+    \begin{appendices}
+        \input{texfile/13_1Code}
+        \input{texfile/13_2ExtraTables}
+    \end{appendices}
+
+    % 14. AI声明
+    \input{texfile/14UseAI}
 
 \end{document}
-

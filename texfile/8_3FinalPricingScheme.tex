@@ -1,0 +1,55 @@
+% ========================================
+% 最终定价方案 (Final Pricing Scheme)
+% 必须包含阶梯水价表和帕累托前沿图
+% ========================================
+
+\subsection{Final Pricing Scheme}
+\subsubsection{Tiered Pricing Table}
+基于多目标优化结果，提出农业阶梯水价方案：
+
+% \begin{table}[h]
+% \centering
+% \begin{tabular}{|c|c|c|c|c|}
+% \hline
+% \textbf{用水类型} & \textbf{阶梯} & \textbf{用量阈值(m³/亩)} & \textbf{水价(元/m³)} & \textbf{适用区域} \\
+% \hline
+% \multirow{3}{*}{粮食作物} & 基础 & 0-300 & 0.35 & 全国 \\
+% \cline{2-5}
+% & 第一阶梯 & 301-450 & 0.65 & 缺水地区 \\
+% \cline{2-5}
+% & 第二阶梯 & >450 & 0.85 & 严重缺水地区 \\
+% \hline
+% \multirow{2}{*}{经济作物} & 基础 & 0-400 & 0.45 & 全国 \\
+% \cline{2-5}
+% & 超量 & >400 & 1.10 & 所有地区 \\
+% \hline
+% \end{tabular}
+% \caption{农业阶梯水价方案}
+% \label{tab:agricultural_pricing}
+% \end{table}
+
+\subsubsection{Pareto Frontier Analysis}
+多目标优化的帕累托前沿如图\ref{fig:pareto_frontier}所示：
+
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\textwidth]{pareto_frontier.pdf}
+% \caption{农民收入下降 vs 节水效果的帕累托前沿}
+% \label{fig:pareto_frontier}
+% \end{figure}
+
+\textbf{方案选择}：选择图中红点对应方案（节水12.7\%，农民收入下降4.8\%），该方案位于帕累托前沿的"拐点"，在节水效果和农民负担间取得最佳平衡。
+
+\subsubsection{Implementation Strategy}
+\begin{itemize}
+    \item \textbf{缓冲期}：2025-2026年为试点期，基础水价维持0.30元/m³
+    \item \textbf{补贴机制}：对低收入农户（年人均收入<1万元）提供每亩50元补贴
+    \item \textbf{技术配套}：同步推广滴灌技术，政府补贴设备费用的50\%
+\end{itemize}
+
+% =============== 写作指导 ===============
+% 1. 必须包含阶梯水价表格（区分作物类型）
+% 2. 必须展示帕累托前沿图（X轴：收入下降，Y轴：节水）
+% 3. 必须用红点标注最终选择的方案
+% 4. 需要说明实施策略（缓冲期、补贴、技术配套）
+% 5. 水价不能过高（一般不超过0.9元/m³）

@@ -1,0 +1,272 @@
+Folder PATH listing for volume work
+Volume serial number is 109A-EEE4
+F:.
+│   LICENSE
+│   MCM-main.tex
+│   mcmthesis.cls
+│   whole_tree.txt
+│   
+├───.claude
+│       settings.local.json
+│       
+├───code
+│   │   code_example.m
+│   │   code_example.py
+│   │   data_loader.py
+│   │   mcmthesis-matlab1.m
+│   │   mcmthesis-sudoku.cpp
+│   │   
+│   ├───figures
+│   ├───Q1
+│   ├───Q2
+│   │       step2_correlation_analysis.py
+│   │       
+│   ├───Q3
+│   └───Q4
+├───datasets
+│   │   A题附件1.csv
+│   │   A题附件2.csv
+│   │   build.py
+│   │   
+│   └───history_datasets
+│       │   队友填表必读.txt
+│       │   
+│       ├───1997
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───1998
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───1999
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2000
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2001
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2002
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2003
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2004
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2005
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2006
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2007
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2008
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2009
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2010
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2011
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2012
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2013
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2014
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2015
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2016
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2017
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2018
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2019
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2020
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2021
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2022
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       ├───2023
+│       │       1_一级水资源区_供用水量.csv
+│       │       2_省级行政区_供用水量.csv
+│       │       3_一级水资源区_用水指标.csv
+│       │       4_省级行政区_用水指标.csv
+│       │       
+│       └───2024
+│               1_一级水资源区_供用水量.csv
+│               2_省级行政区_供用水量.csv
+│               3_一级水资源区_用水指标.csv
+│               4_省级行政区_用水指标.csv
+│               
+├───temple_v0.0
+│   │   MCM-main.pdf
+│   │   MCM-main.tex
+│   │   mcmthesis.cls
+│   │   
+│   └───texfile
+│       │   18Reference.tex
+│       │   19Appendix.tex
+│       │   1abstract.tex
+│       │   20UseAI.tex
+│       │   2ProblemRestatement.tex
+│       │   3ProblemAnalysis.tex
+│       │   4AssumptionAndNotations.tex
+│       │   5MakeModel.tex
+│       │   6ErrorAnalysis.tex
+│       │   7ModelEvaluation.tex
+│       │   reference.bib
+│       │   
+│       └───figures
+│               1.png
+│               fig1.jpg
+│               fig2.jpg
+│               fig24.JPG
+│               mcmthesis-aaa-eps-converted-to.pdf
+│               mcmthesis-logo.pdf
+│               
+├───texfile
+│   │   10StrengthsWeaknesses.tex
+│   │   11PolicyRecommendations.tex
+│   │   12Reference.tex
+│   │   13_1Code.tex
+│   │   13_2ExtraTables.tex
+│   │   14UseAI.tex
+│   │   1abstract.tex
+│   │   2_1ProblemRestatement.tex
+│   │   2_2BackgroundAnalysis.tex
+│   │   3_1DataSources.tex
+│   │   3_2DataCleaning.tex
+│   │   3_3ExploratoryAnalysis.tex
+│   │   4_1Assumptions.tex
+│   │   4_2Notations.tex
+│   │   5_1ModelSelection.tex
+│   │   5_2ModelImplementation.tex
+│   │   5_3ResultsAndVerification.tex
+│   │   6_1FeatureSelectionModel.tex
+│   │   6_2FactorRanking.tex
+│   │   6_3Interpretation.tex
+│   │   7_1IndustrialElasticity.tex
+│   │   7_2ResidentialElasticity.tex
+│   │   7_3ComparativeDiscussion.tex
+│   │   8_1MultiObjectiveModel.tex
+│   │   8_2OptimizationSolving.tex
+│   │   8_3FinalPricingScheme.tex
+│   │   9_1PriceSensitivity.tex
+│   │   9_2ParameterStability.tex
+│   │   9_3SystemRobustness.tex
+│   │   reference.bib
+│   │   
+│   └───figures
+│           1.png
+│           fig1.jpg
+│           fig2.jpg
+│           fig24.JPG
+│           mcmthesis-aaa-eps-converted-to.pdf
+│           mcmthesis-logo.pdf
+│           
+└───题目
+        2026数学建模选拔赛题目.doc
+        2026数学建模选拔赛题目.md
+        提交说明.txt
+        

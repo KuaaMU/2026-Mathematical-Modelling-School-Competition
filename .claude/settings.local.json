@@ -7,7 +7,8 @@
       "Bash(python step2_correlation_analysis.py:*)",
       "Bash(python:*)",
       "Bash(ls:*)",
-      "Bash(tree:*)"
+      "Bash(tree:*)",
+      "Bash(mkdir:*)"
     ]
   }
 }

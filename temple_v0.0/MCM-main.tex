@@ -1,0 +1,52 @@
+\documentclass{mcmthesis}
+\mcmsetup{CTeX = false,    % 使用 CTeX 套装时，设置为 true
+          tcn = {0000000},  % 参赛队编号
+          problem = \textcolor{red}{A}, % 参赛问题编号 A, B, C, D
+          sheet = true, titleinsheet = true, keywordsinsheet = true,
+          titlepage = false, abstract = false}
+
+\usepackage{newtxtext}     % \usepackage{palatino} % 使用 Palatino 字体
+\usepackage{newtxmath}     % \usepackage{mathpazo} % 使用 Pazo Math 字体
+\usepackage[style=apa,backend=biber]{biblatex} % 引用管理
+\addbibresource{texfile/reference.bib}
+
+\usepackage{tocloft}    % 目录设置
+\setlength{\cftbeforesecskip}{6pt} % 目录项之间的间距
+\renewcommand{\contentsname}{\hspace*{\fill}\Large\bfseries Contents \hspace*{\fill}}   % 目录标题居中加粗
+
+
+\title{Enjoy a Cozy and Green Bath} %论文标题
+
+% \author{\small \href{http://www.latexstudio.net/}
+%   {\includegraphics[width=7cm]{mcmthesis-logo}}}
+\date{\today} % 日期，默认今天
+
+
+%文档开始
+\begin{document}
+
+	\input{texfile/1abstract}%摘要+目录  abstract.tex
+
+	\input{texfile/2ProblemRestatement}%插入问题重述   ProblemRestatement.tex
+
+	\input{texfile/3ProblemAnalysis}%插入问题分析    ProblemAnalysis.tex
+
+	\input{texfile/4AssumptionAndNotations}%插入模型假设及符号说明  AssumptionAndNotations.tex
+
+	\input{texfile/5MakeModel} %插入模型的建立与求解   MakeModel.tex
+
+    % \input{texfile/6ModelModification} %插入模型的修正与对比   ModelModification.tex
+
+	\input{texfile/6ErrorAnalysis} %插入误差分析   ErrorAnalysis.tex
+
+	\input{texfile/7ModelEvaluation} %插入模型评价	ModelEvaluation.tex
+
+	\input{texfile/18Reference} %插入参考文献   Reference.tex
+
+	\input{texfile/19Appendix} %插入附录   Appendix.tex
+
+    \input{texfile/20UseAI} % 插入 AI 使用说明 UseAI.tex
+
+
+\end{document}
+
