@@ -4,36 +4,53 @@ In response to the title of this article, the following hypotheses are proposed:
 %1.	假设题目所给的数据真实可靠；
 %注意：假设对整篇文章具有指导性，有时决定问题的难易。一定要注意假设的某种角度上的合理性，不能乱编，完全偏离事实或与题目要求相抵触。注意罗列要工整。
 
-\begin{enumerate}[
-	label = (\arabic*),
-	itemindent = 0pt,
-	labelindent = \parindent,
-	labelwidth = 2em,
-	labelsep = 5pt,
-	leftmargin = 8em]
-	\item[\textbf{Assumption 1:}] This is the first assumption 1.
-	\item[\textbf{Assumption 2:}] This is the second assumption 2.
-	\item[\textbf{Assumption 3:}]
-	\item[\textbf{Assumption 4:}]
-	\item[\textbf{Assumption 5:}]
-\end{enumerate}
+\begin{itemize}
+\item {\bf The bath water is incompressible Non-Newtonian fluid}. The
+incompressible Non-Newtonian fluid is the basis of Navier–Stokes equations
+which are introduced to simulate the flow of bath water.
+
+\item {\bf All the physical properties of bath water, bathtub and air are
+assumed to be stable}. The change of those properties like specific heat,
+thermal conductivity and density is rather small according to some
+studies. It is complicated and unnecessary to consider these little
+change so we ignore them.
+
+\item {\bf There is no internal heat source in the system consisting of bathtub,
+hot water and air}. Before the person lies in the bathtub, no internal heat source
+exist except the system components. The circumstance where the person is in the
+bathtub will be investigated in our later discussion.
+
+\item {\bf We ignore radiative thermal exchange}. According to Stefan-Boltzmann’s
+law, the radiative thermal exchange can be ignored when the temperature is low.
+Refer to industrial standard, the temperature in bathroom is lower than
+100 $^{\circ}$C, so it is reasonable for us to make this assumption.
+
+\item {\bf The temperature of the adding hot water from the faucet is stable}.
+This hypothesis can be easily achieved in reality and will simplify our process
+of solving the problem.
+\end{itemize}
 
 
-\begin{enumerate}
-	\item
-\end{enumerate}
 
-
-
+%% =========================《符号说明》==============================
 \section{Notations}
 % 这部分不要过页（删掉此句话）
 \begin{center}
-	\begin{tabular}{cccc}
+	\begin{tabular}{clc}
 		\toprule[1pt]
-		\makebox[0.15\textwidth][c]{Symbol} & \makebox[0.3\textwidth][c]{Description} & \makebox[0.15\textwidth][c]{Symbol} & \makebox[0.3\textwidth][c]{Description} \\
+		\makebox[0.15\textwidth][c]{\bf Symbol} & {\bf Description} & \makebox[0.15\textwidth][c]{\bf Unit}\\ [0.25cm]
 		\hline
-		$T_i$ & Temperature of small zone & $T_j$ & Temperature of large zone \\
-		$x$ & Variable x & $y$ & Variable y \\
+        %% 在此处添加符号说明 ==========================================
+        $h$         & Convection heat transfer coefficient  & \quad W/(m$^2 \cdot$ K)   \\[0.2cm]
+		$\tau$      & Time                                  & \quad s, min, h           \\[0.2cm]
+        $q_m$       & Mass flow                             & \quad kg/s                \\[0.2cm]
+        $\Phi$      & Heat transfer power                   & \quad W                   \\[0.2cm]
+        $T$         & A period of time                      & \quad s, min, h           \\[0.2cm]
+        $V$         & Volume                                & \quad m$^3$, L            \\[0.2cm]
+        $M,\,m$    & Mass                                   & \quad kg                  \\[0.2cm]
+        $A$         & Area                                  & \quad m$^2$               \\[0.2cm]
+        $a,\,b,\,c$ & The size of a bathtub                 & \quad m$^3$               \\[0.2cm]
+        %% 符号说明闭包===================================================
 		\bottomrule[1pt]
 	\end{tabular}
 	\par \vspace{0.5em} \noindent Note: Undefined variables are defined where they first appear.

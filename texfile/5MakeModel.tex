@@ -1,123 +1,203 @@
 % \newpage
-\section{make models}
-\subsection{数据的预处理}
+\section{Model Overview}
+\subsection{Data Preprocessing}
 
 
-%1. 。。。。。。数据全部缺失，不予考虑。
-%2. 对数据测试的特点，如周期等进行分析。
-%3. 。。。。。。数据残缺，根据数据挖掘等理论根据。。。。。变化趋势进行补充。
-%4. 对数据特点（后面将会用到的特征）进行提取。
-%用。。。。。。。软件聚类分析和各个不同问题的需要，采得。。。组采样，每组5-8个采样值。将采样所对应的特征值进行列表或图示。
-%根据数据特点，对总体和个体的特点进行比较，以表格或图示方式显示。
-\begin{enumerate}[
-	label = (\arabic*),
-	itemindent = 0pt,
-	labelindent = \parindent,
-	labelwidth = 2em,
-	labelsep = 5pt,
-	leftmargin = 4.5em
-	]
-	\item[$Step$ 1:] good morning...
-	\item[$Step$ 2:] good morning....
-\end{enumerate}
+To simplify the modeling process, we firstly assume there is no person in the
+bathtub. We regard the whole bathtub as a thermodynamic system and introduce
+heat transfer formulas. We establish two sub-models: adding water constantly
+and discontinuously. For the former sub-model, we define the mean temperature
+of bath water and introduce Newton's cooling formula to determine the heat
+transfer capacity. After deriving the value of parameters, we deduce formulas
+to derive results and simulate the change of temperature field via CFD, as
+described by \textcite{anderson2006}.
 
-\begin{enumerate}
-	\item
-\end{enumerate}
+In our basic model, we aim at three goals: keeping the temperature as even as
+possible, making it close to the initial temperature and decreasing the water
+consumption.
 
-\subsection{问题一的模型建立与求解}
-\subsubsection{***模型的建立}
+We start with the simple sub-model where hot water is added constantly.
+At first we introduce convection heat transfer control equations in rectangular
+coordinate system. Then we define the mean temperature of bath water.
 
+Afterwards, we introduce Newton cooling formula to determine heat transfer
+capacity. After deriving the value of parameters, we get calculating results
+via formula deduction and simulating results via CFD.
 
-%模型建立的内容要点如下：
-%模型的主要类别：
-%几种常见的建模目的：
-%建模过程常见的几个要点：
-%模型的基本要求：
-%模型选择要点：
-%加分项（能在规定时间内做完后还有足够时间的再考虑加分项）：
-%1、鼓励创新。在能解决问题的基础上，对经典模型进行改进，欣赏独树一帜、有创新性的模型，但要合理。
-%2、对于同一问题使用两个或以上合理模型进行求解。避免出现单纯罗列模型，又不做对比和评价的现象。
-%参考话术：我们需要解决的问题是。。。。，题目要求是。。。。，剔除。。。数据后选用何种类型的模型优点进行分析。具体步骤123。。。
-\subsubsection{***模型的求解}
+Secondly, we present the complicated sub-model in which hot water is
+added discontinuously. We define an iteration consisting of two process:
+heating and standby. As for heating process, we derive control equations and
+boundary conditions. As for standby process, considering energy conservation law,
+we deduce the relationship of total heat dissipating capacity and time.
 
+Then we determine the time and amount of added hot water. After deriving the
+value of parameters, we get calculating results via formula deduction and
+simulating results via CFD.
 
-%将预处理数据带入上述模型，通过。。。软件得到。。结果。（编程代码详见附件*）。模型求解及结果需要图文并茂，用数据说话  用图展示。具体步骤123。。。
-\subsubsection{结果}
+At last, we define two criteria to evaluate those two ways of adding hot water.
+Then we propose optimal strategy for the user in a bathtub.
+The whole modeling process can be shown as follows.
 
-
-%针对于每一个问题的结果综述总结。
-\subsection{二级标题}
-\subsubsection{三级标题}
-
-
-\subsubsection{列表环境}
-\begin{enumerate}
-	\item
-
-	\item
-\end{enumerate}
-
-
-\begin{itemize}
-	\item[(a)]
-
-
-	\item[(b)]
-\end{itemize}
-
-
-\begin{itemize}
-	\item
-	\item
-\end{itemize}
-
-\subsubsection{图}
-\begin{figure}[h]%[h]：固定作用
-	\centering%置中
-	\includegraphics [scale=0.5]{texfile/figures/1.png}
-	\caption{图名}
-	\label{fig:1}
+\begin{figure}[h]
+\centering
+\includegraphics[width=12cm]{texfile/figures/fig1.jpg}
+\caption{Modeling process} \label{fig1}
 \end{figure}
 
-TOPS:如何引用看这里：图\ref{fig:1}
+\section{Sub-model I : Adding Water Continuously}
 
+As for the second sub-model, we define an iteration consisting of two processes:
+heating and standby. According to the energy conservation law, we obtain the
+relationship of time and total heat dissipating capacity. Then we determine
+the mass flow and the time of adding hot water. We also use CFD to simulate
+the temperature field in the second sub-model, following the techniques
+outlined by \textcite{website2024}.
 
+We first establish the sub-model based on the condition that a person add water
+continuously to reheat the bathing water. Then we use Computational Fluid
+Dynamics (CFD) to simulate the change of water temperature in the bathtub. At
+last, we evaluate the model with the criteria which have been defined before.
 
+\subsection{Model Establishment}
 
+Since we try to keep the temperature of the hot water in bathtub to be even,
+we have to derive the amount of inflow water and the energy dissipated by the
+hot water into the air.
 
-\subsubsection{表}
+We derive the basic convection heat transfer control equations based on the
+former scientists’ achievement. Then, we define the mean temperature of bath
+water. Afterwards, we determine two types of heat transfer: the boundary heat
+transfer and the evaporation heat transfer. Combining thermodynamic formulas,
+we derive calculating results. Via Fluent software, we get simulation results.
 
-\begin{table}[!htbp]
-	\caption{表名}	\centering
-	\begin{tabular}{c c}
-		\hline \multicolumn{1}{c} { 焊接区域中心温度} & 时间 $(\mathrm{s})$ \\
-		\hline $30^{\circ} \mathrm{C}$ & 0 \\
-		$150^{\circ} \mathrm{C}$ & $t_{1}$ \\
-		$190^{\circ} \mathrm{C}$ & $t_{2}$ \\
-		\hline
-		\label{tab:1}
-	\end{tabular}
-\end{table}
+\subsubsection{Control Equations and Boundary Conditions}
 
-TOPS:如何引用看这里：表\ref{tab:1}
+According to thermodynamics knowledge, we recall on basic convection
+heat transfer control equations in rectangular coordinate system. Those
+equations show the relationship of the temperature of the bathtub water in space.
 
-\subsubsection{公式}
+We assume the hot water in the bathtub as a cube. Then we put it into a
+rectangular coordinate system. The length, width, and height of it is $a,\, b$
+and $c$.
 
-$\alpha^2+\beta^2=\gamma^2$
+\begin{figure}[h]
+\centering
+\includegraphics[width=8cm]{texfile/figures/fig2.jpg}
+\caption{Modeling process} \label{fig2}
+\end{figure}
 
-$$ \alpha^2+\beta^2=\gamma^2$$
+In the basis of this, we introduce the following equations:
 
-\begin{equation}\nonumber
-	\alpha^2+\beta^2=\gamma^2
+\begin{itemize}
+\item {\bf Continuity equation:}
+\end{itemize}
+
+\begin{equation} \label{eq1}
+\frac{\partial u}{\partial x} + \frac{\partial v}{\partial y} +
+\frac{\partial w}{\partial z} = 0
 \end{equation}
 
-\begin{equation}
-	\alpha^2+\beta^2=\gamma^2 \label{1}
+\noindent where the first component is the change of fluid mass along the $X$-ray.
+The second component is the change of fluid mass along the $Y$-ray. And the third
+component is the change of fluid mass along the $Z$-ray. The sum of the change in
+mass along those three directions is zero.
+
+\begin{itemize}
+\item {\bf Moment differential equation (N-S equations):}
+\end{itemize}
+
+\begin{equation} \label{eq2}
+\left\{
+\begin{array}{l} \!\!
+\rho \Big(u \dfrac{\partial u}{\partial x} + v \dfrac{\partial u}{\partial y} +
+w\dfrac{\partial u}{\partial z} \Big) = -\dfrac{\partial p}{\partial x} +
+\eta \Big(\dfrac{\partial^2 u}{\partial x^2} + \dfrac{\partial^2 u}{\partial y^2} +
+\dfrac{\partial^2 u}{\partial z^2} \Big) \\[0.3cm]
+\rho \Big(u \dfrac{\partial v}{\partial x} + v \dfrac{\partial v}{\partial y} +
+w\dfrac{\partial v}{\partial z} \Big) = -\dfrac{\partial p}{\partial y} +
+\eta \Big(\dfrac{\partial^2 v}{\partial x^2} + \dfrac{\partial^2 v}{\partial y^2} +
+\dfrac{\partial^2 v}{\partial z^2} \Big) \\[0.3cm]
+\rho \Big(u \dfrac{\partial w}{\partial x} + v \dfrac{\partial w}{\partial y} +
+w\dfrac{\partial w}{\partial z} \Big) = -g-\dfrac{\partial p}{\partial z} +
+\eta \Big(\dfrac{\partial^2 w}{\partial x^2} + \dfrac{\partial^2 w}{\partial y^2} +
+\dfrac{\partial^2 w}{\partial z^2} \Big)
+\end{array}
+\right.
 \end{equation}
 
-\begin{equation}
-	a+b=c \label{2}
+\begin{itemize}
+\item {\bf Energy differential equation:}
+\end{itemize}
+
+\begin{equation} \label{eq3}
+\rho c_p \Big( u\frac{\partial t}{\partial x} + v\frac{\partial t}{\partial y} +
+w\frac{\partial t}{\partial z} \Big) = \lambda \Big(\frac{\partial^2 t}{\partial x^2} +
+\frac{\partial^2 t}{\partial y^2} + \frac{\partial^2 t}{\partial z^2} \Big)
 \end{equation}
 
-TOPS:如何引用看这里：公式\eqref{1}和公式\eqref{2}
+\noindent where the left three components are convection terms while the right
+three components are conduction terms.
+
+By Equation \eqref{eq3}, we have ......
+
+......
+
+On the right surface in Fig. \ref{fig2}, the water also transfers heat firstly
+with bathtub inner surfaces and then the heat comes into air. The boundary
+condition here is ......
+
+\subsubsection{Definition of the Mean Temperature}
+
+......
+
+\subsubsection{Determination of Heat Transfer Capacity}
+
+......
+
+\section{Sub-model II: Adding Water Discontinuously}
+
+In order to establish the unsteady sub-model, we recall on the working principle
+of air conditioners. The heating performance of air conditions consist of two
+processes: heating and standby. After the user set a temperature, the air
+conditioner will begin to heat until the expected temperature is reached. Then
+it will go standby. When the temperature get below the expected temperature,
+the air conditioner begin to work again. As it works in this circle, the
+temperature remains the expected one.
+
+Inspired by this, we divide the bathtub working into two processes: adding
+hot water until the expected temperature is reached, then keeping this
+condition for a while unless the temperature is lower than a specific value.
+Iterating this circle ceaselessly will ensure the temperature kept relatively
+stable.
+
+\subsection{Heating Model}
+
+\subsubsection{Control Equations and Boundary Conditions}
+
+\subsubsection{Determination of Inflow Time and Amount}
+
+\subsection{Standby Model}
+
+\subsection{Results}
+
+\quad~ We first give the value of parameters based on others’ studies. Then we
+get the calculation results and simulating results via those data.
+
+\subsubsection{Determination of Parameters}
+
+After establishing the model, we have to determine the value of some
+important parameters.
+
+As scholar Beum Kim points out, the optimal temperature for bath is
+between 41 and 45$^\circ$C. Meanwhile, according to Shimodozono's study,
+41$^\circ$C warm water bath is the perfect choice for individual health.
+So it is reasonable for us to focus on $41^\circ$C $\sim 45^\circ$C. Because
+adding hot water continuously is a steady process, so the mean temperature
+of bath water is supposed to be constant. We value the temperature of inflow
+and outflow water with the maximum and minimum temperature respectively.
+
+The values of all parameters needed are shown as follows:
+
+.....
+
+\subsubsection{Calculating Results}
