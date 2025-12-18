@@ -49,21 +49,28 @@
     \input{texfile/3_3ExploratoryAnalysis}      % 核心图表：相关性热力图 + 历史趋势图
 
     % 4. 假设与符号
-    \section{模型假设与符号说明}
+    % \section{模型假设与符号说明}
+    \section{Assumptions and Justifications}
     \input{texfile/4_1Assumptions}
+    \section{Notations}
     \input{texfile/4_2Notations}
 
     % ===== 问题1：预测 (Prediction) =====
     \section{全国用水量短期预测 (2017-2021)}
+    %英文标题
+    % \section{Short-term Prediction of National Water Consumption (2017-2021)}
     \input{texfile/5_1ModelSelection}           % 为什么用组合模型 (ARIMA+LSTM)
     \input{texfile/5_2ModelImplementation}      % 训练过程
     \input{texfile/5_3ResultsAndVerification}   % 【微调】直接在这里放误差图 (MAPE)，证明模型准
 
     % ===== 问题2：归因 (Attribution) =====
     \section{用水量影响因素识别}
+    %英文标题
+    % \section{Identification of Key Factors Influencing Water Consumption}
     \input{texfile/6_1FeatureSelectionModel}    % 随机森林 / Lasso回归
     \input{texfile/6_2FactorRanking}            % 给出排名：人口 > GDP > ...
     \input{texfile/6_3Interpretation}           % 经济学解释
+    % \input{texfile/6_IdentificationOfKeyFactors}
 
     % ===== 问题3：机制 (Mechanism) - 采纳Qwen建议，分开建模 =====
     \section{水价弹性分析：工业 vs 居民}

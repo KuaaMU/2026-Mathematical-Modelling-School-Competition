@@ -1,1 +1,57 @@
 % 经济学解释
+Further analysis using Standardized Linear Regression reveals a profound
+economic insight regarding the 'Decoupling Effect':
+\begin{itemize}
+\item \textbf{Population as a Rigid Driver (Coef = 2.306):} The coefficient for population is dominant and positive. This confirms that basic living needs and food security (driven by population) create a rigid demand for water resources.
+\item \textbf{Relative Decoupling of GDP (Coef = 0.137):} Although China's GDP has grown exponentially, its impact coefficient on water usage is remarkably low (0.137) compared to population. This phenomenon indicates a \textbf{Relative Decoupling}. It implies that economic growth is no longer heavily reliant on extensive water consumption. The widespread adoption of water-saving technologies in industry and the shift towards the service sector have successfully improved the \textbf{marginal water use efficiency} of the economy."
+\end{itemize}
+
+% --- 插入图1：结构分解 ---
+\subsection{Structural Decomposition of Water Consumption}
+To understand the composition of water usage, we first analyzed the temporal
+evolution of four major sectors. As illustrated in Figure \ref{fig:structure},
+\textbf{Agricultural Water} (blue area) consistently dominates the consumption
+structure, accounting for over 60\% of the total volume. Meanwhile, \textbf{Industrial Water}
+(orange area) shows a trend of stabilization after 2010, reflecting the initial success of
+industrial water-saving policies.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{code/Q2/question2/results_optimized/1_structure_HD.png}
+    \caption{\textbf{Evolution of Water Consumption Structure (2000-2016).} The stacked area chart highlights that agricultural irrigation is the rigid base of water demand, while the proportion of industrial water usage has stabilized due to efficiency improvements.}
+    \label{fig:structure}
+\end{figure}
+
+% --- 插入图2和图3：并排展示驱动因子分析 ---
+\subsection{Identification of Macro-Drivers: Population vs. GDP}
+Although structural analysis reveals \textit{where} the water goes, it does
+not explain \textit{what drives} the total demand. We employed Grey Relational
+Analysis (GRA) and Standardized Regression to quantify the impact of external
+macro-factors.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{code/Q2/question2/results/2_gra_drivers.png}
+        \caption{\textbf{Grey Relational Analysis (GRA).} Population shows a significantly higher correlation (0.964) with water usage trends compared to GDP (0.556).}
+        \label{fig:gra}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{code/Q2/question2/results_optimized/3_drivers_impact.png}
+        \caption{\textbf{Standardized Regression Coefficients.} The contrast between Population (2.306) and GDP (0.137) reveals the relative decoupling effect.}
+        \label{fig:impact}
+    \end{minipage}
+\end{figure}
+
+\subsubsection{The Discovery of "Relative Decoupling"}
+As shown in Figure \ref{fig:impact}, the standardized regression results present a
+compelling economic insight:
+
+\begin{itemize}
+    \item \textbf{Population as a Rigid Driver (Coefficient $\approx$ 2.31):} The impact of population is overwhelmingly positive and significant. A 1-unit increase in standardized population leads to a 2.31-unit surge in water consumption. This confirms that demographic expansion creates a rigid demand for basic living and food security (agricultural water).
+
+    \item \textbf{Relative Decoupling of GDP (Coefficient $\approx$ 0.14):} In sharp contrast, the coefficient for GDP is remarkably low (0.137). Despite China's exponential economic growth during this period, its marginal impact on water consumption is minimal. This phenomenon is known as \textbf{"Relative Decoupling"}. It indicates that economic growth is shifting from water-intensive industries to high-tech and service sectors, significantly improving the \textbf{marginal water productivity}.
+\end{itemize}

@@ -1,65 +1,69 @@
 % ========================================
+% 文件：5_3ResultsAndVerification.tex
 % 预测结果与验证 (Results and Verification)
-% 误差分析必须紧跟预测结果
+% 重点：利用2017-2021真值进行“反事实分析”
 % ========================================
 
-\subsection{Results and Verification}
-\subsubsection{Forecasting Results}
-2017-2021年全国用水量预测结果如表\ref{tab:forecast_results}所示：
+\subsection{Results Analysis and Model Verification}
 
-% \begin{table}[h]
-% \centering
-% \begin{tabular}{|c|c|c|c|}
-% \hline
-% \textbf{年份} & \textbf{预测值(亿m³)} & \textbf{95\%置信区间} & \textbf{增长率} \\
-% \hline
-% 2017 & 6050 & [5980, 6120] & 0.17\% \\
-% \hline
-% 2018 & 6080 & [5990, 6170] & 0.50\% \\
-% \hline
-% 2019 & 6110 & [6010, 6210] & 0.49\% \\
-% \hline
-% 2020 & 6140 & [6030, 6250] & 0.49\% \\
-% \hline
-% 2021 & 6170 & [6050, 6290] & 0.49\% \\
-% \hline
-% \end{tabular}
-% \caption{2017-2021年用水量预测结果}
-% \label{tab:forecast_results}
-% \end{table}
+To rigorously evaluate the performance of our optimized ensemble model (ARIMA + Polynomial Regression),
+we conducted a \textbf{hindcasting validation} using the ground truth data from 2017 to 2021. This period
+is critical as it covers both "normal years" and the "extreme shock year" (COVID-19), allowing us to
+test both the accuracy and the sensitivity of the model.
 
-\subsubsection{Model Verification}
-模型精度验证结果如图\ref{fig:error_analysis}和表\ref{tab:error_metrics}所示：
+\subsubsection{Model Robustness in Normal Years (2017-2019)}
 
-% \begin{figure}[h]
-% \centering
-% \includegraphics[width=0.8\textwidth]{forecast_validation.pdf}
-% \caption{2000-2016年拟合效果与2017-2021年预测}
-% \label{fig:error_analysis}
-% \end{figure}
+As shown in Table \ref{tab:validation_results}, the model demonstrates exceptional accuracy during the
+pre-pandemic period. The relative errors for 2017, 2018, and 2019 are \textbf{0.5\%}, \textbf{1.1\%},
+and \textbf{1.0\%}, respectively.
 
-% \begin{table}[h]
-% \centering
-% \begin{tabular}{|l|c|c|c|}
-% \hline
-% \textbf{模型} & \textbf{MAPE(\%)} & \textbf{RMSE} & \textbf{R²} \\
-% \hline
-% ARIMA(2,1,1) & 2.35 & 78.6 & 0.92 \\
-% \hline
-% LSTM & 2.18 & 75.2 & 0.93 \\
-% \hline
-% \textbf{组合模型} & \textbf{1.80} & \textbf{68.3} & \textbf{0.95} \\
-% \hline
-% \end{tabular}
-% \caption{模型精度对比}
-% \label{tab:error_metrics}
-% \end{table}
+This high fidelity indicates that our model successfully captures the "Saturation Phase" characteristics
+of China's water consumption. Unlike exponential growth models (e.g., GM(1,1)) which tend to overestimate,
+our ensemble approach correctly identifies the stabilizing trend driven by water-saving policies and
+industrial upgrading.
 
-\textbf{结论}：组合模型平均MAPE为\textbf{1.80\%}，满足短期预测精度要求（<3\%）。
+\subsubsection{Quantification of COVID-19 Impact (Counterfactual Analysis)}
 
-% =============== 写作指导 ===============
-% 1. 必须包含预测结果表格（带置信区间）
-% 2. 必须展示拟合曲线图（如上图）
-% 3. 必须进行模型对比，证明组合模型最优
-% 4. 误差指标MAPE/RMSE/R²都要计算
-% 5. 置信区间用公式：预测值±1.96×标准误差
+A significant divergence is observed in 2020, as visualized in Figure \ref{fig:forecast_validation}.
+\begin{itemize}
+    \item \textbf{The Counterfactual Baseline:} The model predicted a water consumption of \textbf{60.84 billion $m^3$} for 2020. This value represents the \textit{counterfactual scenario}—i.e., the expected consumption level if the pandemic had not occurred.
+    \item \textbf{The Real-world Shock:} The actual consumption dropped to \textbf{58.13 billion $m^3$}.
+    \item \textbf{Impact Quantification:} The \textbf{4.7\% gap} between the prediction and the actual value quantitatively measures the negative impact of COVID-19 on industrial production and social activities.
+\end{itemize}
+
+In 2021, the error narrowed to \textbf{2.8\%}, suggesting a "V-shaped" or partial recovery of economic
+activities, though a lagged effect remains.
+
+\begin{figure}[htbp]
+    \centering
+    % 请确保文件名和你保存的图片一致
+    \includegraphics[width=1.0\textwidth]{code/Q1/question1/results/forecast_final_no_gm.png}
+    \caption{\textbf{Model Validation and Impact Quantification (2017-2021).} The red dashed line represents the model's baseline prediction (Counterfactual Scenario). The low error rates ($<$1.1\%) during 2017-2019 validate the model's robustness. The significant gap in 2020 (4.7\%) quantitatively reflects the external shock caused by COVID-19.}
+    \label{fig:forecast_validation}
+\end{figure}
+
+\subsubsection{Detailed Validation Data}
+
+The detailed comparison between the predicted values (Ensemble Model) and the ground truth is presented
+in Table \ref{tab:validation_results}.
+
+\begin{table}[h]
+\centering
+\caption{Comparison of Predicted vs. Actual Water Consumption (2017-2021)}
+\label{tab:validation_results}
+\begin{tabular}{ccccc}
+\toprule
+\textbf{Year} & \textbf{Actual ($10^9 m^3$)} & \textbf{Predicted ($10^9 m^3$)} & \textbf{Abs. Error ($10^9 m^3$)} & \textbf{Rel. Error (\%)} \\
+\midrule
+2017 & 60.434 & 60.76 & 0.33 & \textbf{0.55\%} \\
+2018 & 60.155 & 60.80 & 0.64 & \textbf{1.07\%} \\
+2019 & 60.212 & 60.83 & 0.62 & \textbf{1.02\%} \\
+2020 & \textit{58.129} & \textit{60.84} & \textit{2.71} & \textit{\textbf{4.67\% (Shock)}} \\
+2021 & 59.202 & 60.85 & 1.65 & 2.78\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Conclusion:} The Mean Absolute Percentage Error (MAPE) for normal years (2017-2019)
+is \textbf{0.88\%}, far below the standard threshold of 3\%. This validates that the model is
+highly reliable for future forecasting under stable socioeconomic conditions.

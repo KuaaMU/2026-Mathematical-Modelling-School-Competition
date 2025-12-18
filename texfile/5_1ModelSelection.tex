@@ -1,1 +1,43 @@
-% 模型选择理由
+% ========================================
+% 文件：5_1ModelSelection.tex
+% 模型选择 (Model Selection)
+% 重点：阐述为何放弃深度学习和GM(1,1)，选择ARIMA+Poly组合
+% ========================================
+
+\subsection{Model Selection Strategy}
+
+The task of predicting national water consumption for 2017-2021 presents a specific challenge: \textbf{Small Sample Size}. The provided dataset covers the period from 2000 to 2016, containing only 17 data points. This constraint fundamentally dictates our model selection strategy.
+
+\subsubsection{Data Characteristic Analysis}
+Before establishing the model, we analyzed the statistical characteristics of the historical water consumption data:
+\begin{itemize}
+    \item \textbf{Small Sample Size ($N=17$):} Deep learning models such as LSTM (Long Short-Term Memory) or Transformers typically require large datasets to converge and avoid overfitting. Therefore, statistical models and regression analyses are more suitable candidates.
+    \item \textbf{Non-Exponential Trend:} The data shows a rapid increase in the early 2000s but enters a "saturation" or "plateau" phase after 2013. The traditional GM(1,1) Grey Prediction model assumes exponential growth, which contradicts the recent stabilization trend of water usage.
+    \item \textbf{Autocorrelation:} Water consumption is a time-series variable with inertia; current usage is highly correlated with previous years.
+\end{itemize}
+
+\subsubsection{Candidate Models Assessment}
+Based on the analysis above, we evaluated three potential modeling approaches:
+
+\begin{enumerate}
+    \item \textbf{GM(1,1) Grey Prediction:}
+    \begin{itemize}
+        \item \textit{Pros:} Suitable for small samples with poor information.
+        \item \textit{Cons:} Assumes monotonic exponential growth. Preliminary tests showed it tends to overestimate the stable trend observed after 2013. \textbf{(Discarded)}
+    \end{itemize}
+
+    \item \textbf{ARIMA (AutoRegressive Integrated Moving Average):}
+    \begin{itemize}
+        \item \textit{Pros:} Excellent at capturing the autocorrelation and stationary properties of time series after differencing.
+        \item \textit{Cons:} May struggle to capture global non-linear trends if the series is too short. \textbf{(Selected as Core Component)}
+    \end{itemize}
+
+    \item \textbf{Polynomial Regression (Degree 2):}
+    \begin{itemize}
+        \item \textit{Pros:} Capable of fitting the non-linear "saturation" curve (an inverted U-shape or flattening curve).
+        \item \textit{Cons:} Extrapolation risk if the degree is too high. \textbf{(Selected for Trend Correction)}
+    \end{itemize}
+\end{enumerate}
+
+\subsubsection{The Ensemble Strategy}
+To balance the capability of capturing local fluctuations (ARIMA) and the global trend (Polynomial Regression), we propose a \textbf{Weighted Ensemble Model}. By combining these two distinct mathematical logic systems, we aim to minimize the variance of the prediction and improve robustness against potential outliers.

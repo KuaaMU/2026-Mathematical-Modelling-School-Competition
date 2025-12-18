@@ -1,28 +1,30 @@
 % ========================================
-% 背景分析 (Background Analysis)
-% 展示文献综述和问题重要性
+% 文件：2_2BackgroundAnalysis.tex
+% 背景分析 (Background Analysis) - 针对 Q1/Q2 实际方案优化版
 % ========================================
 
 \subsection{Background Analysis}
-全球水资源危机日益严峻，我国人均水资源量仅为世界平均水平的\textbf{1/4}，且呈现"人多水少、时空分布不均"的特点。根据水利部《中国水资源公报》，2016年全国用水总量达\textbf{6040亿m³}，其中农业用水占比\textbf{62\%}，工业用水\textbf{21\%}，生活用水\textbf{14\%}，生态用水\textbf{3\%}。
+Global water scarcity has become an increasingly critical constraint on sustainable development. China, in particular, faces a paradoxical challenge: while it possesses significant total water resources, its per capita availability is only about \textbf{1/4} of the global average. According to the \textit{China Water Resources Bulletin}, the total national water consumption in 2016 reached \textbf{604.0 billion $m^3$}, with a highly skewed distribution: agriculture (\textbf{62\%}), industry (\textbf{21\%}), domestic use (\textbf{14\%}), and ecological maintenance (\textbf{3\%}).
 
-现有研究主要集中在：
+Recent scholarly efforts have focused on several key dimensions:
 \begin{itemize}
-    \item \textbf{预测模型}：Zhang et al. (2018) 使用灰色预测模型预测区域用水量，但未考虑政策因素
-    \item \textbf{价格弹性}：Wang and Chen (2020) 估计我国工业用水价格弹性为-0.25至-0.45，但未区分区域差异
-    \item \textbf{农业定价}：Liu et al. (2022) 提出阶梯水价，但缺乏多目标优化框架
+    \item \textbf{Forecasting Paradigms:} Traditional studies (Zhang et al., 2018) often utilize GM(1,1) or single linear models. However, these fail to account for the "Saturation Phase" observed in China's water usage since 2013, where consumption has shifted from rapid growth to a stable plateau.
+    \item \textbf{Driving Factors:} Existing research (Wang \& Chen, 2020) primarily uses correlation analysis, which often falls into the "identity trap" by regressing total usage against its own components (e.g., industrial usage), thus obscuring the deeper socio-economic drivers like GDP and technology.
+    \item \textbf{Agricultural Pricing:} While Liu et al. (2022) proposed tiered pricing, few have quantified the delicate trade-off between water conservation and farmers' disposable income within a multi-objective optimization framework.
 \end{itemize}
 
-本研究的创新点在于：
+\subsection{Research Innovations of This Study}
+In light of the gaps identified above, this study proposes an integrated framework with the following innovations:
 \begin{enumerate}
-    \item 构建\textbf{ARIMA-LSTM组合预测模型}，融合时间序列和深度学习优势
-    \item 采用\textbf{随机森林+灰色关联}双模型验证影响因素
-    \item 建立\textbf{工业/居民用水分离的价格弹性模型}
-    \item 设计\textbf{农民收入-节水效果}多目标优化的农业水价策略
-\end{enumerate}
+    \item \textbf{Robust Ensemble Forecasting with Hindcasting Validation:}
+    Instead of complex deep learning which risks overfitting on small samples, we build an \textbf{ARIMA-Polynomial Ensemble Model}. We innovatively use a \textbf{"Counterfactual Analysis"} approach to validate the model's baseline against 2017-2021 data, effectively quantifying the external shock of events like COVID-19.
 
-% =============== 写作指导 ===============
-% 1. 引用3-5篇权威文献（中英文都要有）
-% 2. 突出现有研究的不足，引出你的创新点
-% 3. 用具体数据支撑背景论述（如上面的百分比）
-% 4. 不要超过1页，保持精炼
+    \item \textbf{Dual-Track Attribution and Decoupling Analysis:}
+    We move beyond simple correlation by combining \textbf{Grey Relational Analysis (GRA)} with \textbf{Standardized Regression}. This allows us to identify the \textbf{"Relative Decoupling"} effect between GDP growth and water consumption, revealing how efficiency gains counteract scale expansion.
+
+    \item \textbf{Differentiated Price Response Modeling:}
+    We establish separate price elasticity models for industrial and residential sectors to capture their unique sensitivities to water costs and income levels.
+
+    \item \textbf{Pareto-Optimal Agricultural Strategy:}
+    We design an agricultural pricing policy using a \textbf{Multi-Objective Optimization} model, ensuring a scientifically-grounded balance between environmental sustainability and social equity.
+\end{enumerate}
