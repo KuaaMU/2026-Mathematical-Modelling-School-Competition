@@ -1,1 +1,60 @@
-% 多目标模型
+\subsection{Multi-Objective Optimization Model}
+
+Agricultural water pricing is formulated as a multi-objective optimization model balancing water conservation and farmer welfare:
+
+\subsubsection{Objective Functions}
+
+\textbf{Objective 1: Water Conservation} (Minimize)
+\begin{equation}
+f_1(p) = \sum_{i=1}^{n} A_i \cdot Q_i(p_i)
+\end{equation}
+
+where $A_i$ is the area proportion of crop $i$, and $Q_i(p_i)$ is water demand for crop $i$ at price $p_i$:
+
+\begin{equation}
+Q_i(p_i) = Q_{i0} \cdot \left(\frac{p_i}{p_{i0}}\right)^{\varepsilon_i}
+\end{equation}
+
+\textbf{Objective 2: Farmer Welfare} (Minimize Income Loss)
+\begin{equation}
+f_2(p) = \sum_{i=1}^{n} A_i \cdot S_i \cdot \frac{(p_i - p_{i0}) \cdot Q_i(p_i)}{R_i}
+\end{equation}
+
+where $S_i$ is the farmer income share, and $R_i$ is the per-acre income for crop $i$.
+
+\subsubsection{Constraints}
+
+\textbf{Affordability Constraint}:
+\begin{equation}
+\frac{(p_i - p_{i0}) \cdot Q_i(p_i)}{R_i} \leq 0.08, \quad \forall i
+\end{equation}
+
+\textbf{Food Security Constraint}:
+\begin{equation}
+\frac{Q_i(p_i)}{Q_{i0}} \geq 0.90, \quad \forall i \in \{rice, wheat, corn\}
+\end{equation}
+
+\textbf{Price Boundary Constraint}:
+\begin{equation}
+0.20 \leq p_i \leq 1.00, \quad \forall i
+\end{equation}
+
+\subsubsection{Crop-Specific Parameters}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Crop Type} & \textbf{Base Water Use} & \textbf{Price Elasticity} & \textbf{Area Share} & \textbf{Income Share} \\
+\textbf{} & \textbf{(m$^3$/acre)} & \textbf{} & \textbf{(\%)} & \textbf{(\%)} \\
+\hline
+Rice & 400 & -0.25 & 35 & 15 \\
+Wheat & 300 & -0.20 & 25 & 18 \\
+Corn & 350 & -0.22 & 20 & 16 \\
+Vegetables & 500 & -0.35 & 15 & 25 \\
+Fruits & 600 & -0.40 & 5 & 30 \\
+\hline
+\end{tabular}
+\caption{Crop-Specific Parameters for Optimization}
+\label{tab:crop_parameters}
+\end{table}

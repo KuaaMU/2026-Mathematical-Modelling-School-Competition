@@ -1,0 +1,26 @@
+=== Improved Water Price Elasticity Analysis Report ===
+
+EXECUTIVE SUMMARY:
+Industrial Price Elasticity: -0.4953
+Residential Price Elasticity: -0.1072
+Residential Income Elasticity: 0.3508
+
+STATISTICAL SIGNIFICANCE:
+Industrial p-value: 0.0010 (Significant)
+Residential price p-value: 0.4298 (Not significant)
+Residential income p-value: 0.0312 (Significant)
+
+POLICY INSIGHTS:
+Price Sensitivity Ranking:
+  1. Industrial (more sensitive)
+  2. Residential (less sensitive)
+
+Policy Recommendations:
+  • 优先对工业用水实施价格调控政策 (Prioritize industrial water pricing policies)
+  • 工业水价提升10%可减少用水约5.0% (10% industrial price increase → 5.0% consumption reduction)
+  • 居民水价政策需配合收入补贴 (Residential pricing needs income subsidies)
+  • 推广工业节水技术投资激励 (Promote industrial water-saving technology incentives)
+
+CONSERVATION POTENTIAL:
+High potential: Industrial sector
+Moderate potential: Residential sector

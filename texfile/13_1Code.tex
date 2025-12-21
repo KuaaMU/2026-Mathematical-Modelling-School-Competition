@@ -1,19 +1,98 @@
-% 附录：核心代码
+\section{Code Appendix}
 
-\section{First appendix}
+\subsection{Problem 3: Water Price Elasticity Analysis}
 
-In addition, your report must include a letter to the Chief Financial Officer
-(CFO) of the Goodgrant Foundation, Mr. Alpha Chiang, that describes the optimal
-investment strategy, your modeling approach and major results, and a brief
-discussion of your proposed concept of a return-on-investment (ROI). This letter
-should be no more than two pages in length.
+The core econometric analysis for industrial and residential water price elasticity:
 
-Here are simulation programmes we used in our model as follow (\cite{Liu02}).\\
+\textbf{Python Implementation:}
+\begin{lstlisting}[language=Python]
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from scipy import stats
 
-\textbf{\textcolor[rgb]{0.98,0.00,0.00}{Input matlab source:}}
-% \lstinputlisting[language=Matlab]{./code/mcmthesis-matlab1.m}
+# Industrial water elasticity analysis
+def analyze_industrial_elasticity(data):
+    # Log-linear demand model
+    log_quantity = np.log(data['industrial_water'])
+    log_price = np.log(data['industrial_price'])
+    log_gdp = np.log(data['industrial_gdp'])
+    
+    X = np.column_stack([log_price, log_gdp])
+    model = LinearRegression().fit(X, log_quantity)
+    
+    price_elasticity = model.coef_[0]
+    gdp_elasticity = model.coef_[1]
+    
+    return price_elasticity, gdp_elasticity
 
-\section{Second appendix}
+# Residential water elasticity analysis  
+def analyze_residential_elasticity(data):
+    log_quantity = np.log(data['residential_water'])
+    log_price = np.log(data['residential_price'])
+    log_income = np.log(data['per_capita_income'])
+    
+    X = np.column_stack([log_price, log_income])
+    model = LinearRegression().fit(X, log_quantity)
+    
+    return model.coef_[0], model.coef_[1]
+\end{lstlisting}
 
-some more text \textcolor[rgb]{0.98,0.00,0.00}{\textbf{Input C++ source:}}
-% \lstinputlisting[language=C++]{./code/mcmthesis-sudoku.cpp}
+\subsection{Problem 4: Multi-Objective Optimization}
+
+The agricultural water pricing optimization using SLSQP algorithm:
+
+\textbf{Python Implementation:}
+\begin{lstlisting}[language=Python]
+from scipy.optimize import minimize
+import numpy as np
+
+def multi_objective_optimization():
+    # Crop parameters
+    crops = ['rice', 'wheat', 'corn', 'vegetables', 'fruits']
+    base_water = [400, 300, 350, 500, 600]
+    elasticity = [-0.25, -0.20, -0.22, -0.35, -0.40]
+    area_share = [0.35, 0.25, 0.20, 0.15, 0.05]
+    
+    def objective(prices, weight=0.5):
+        # Water conservation objective
+        water_use = sum(area_share[i] * base_water[i] * 
+                       (prices[i]/0.3)**elasticity[i] 
+                       for i in range(5))
+        
+        # Farmer welfare objective  
+        income_impact = sum(area_share[i] * 
+                           (prices[i] - 0.3) * base_water[i] * 
+                           (prices[i]/0.3)**elasticity[i] / 2000
+                           for i in range(5))
+        
+        return weight * water_use + (1-weight) * income_impact * 10
+    
+    # Constraints
+    constraints = [
+        # Affordability constraint
+        {'type': 'ineq', 'fun': lambda p: 0.08 - max(
+            (p[i] - 0.3) * base_water[i] * (p[i]/0.3)**elasticity[i] / 2000
+            for i in range(5))},
+        # Food security constraint  
+        {'type': 'ineq', 'fun': lambda p: min(
+            (p[i]/0.3)**elasticity[i] for i in range(3)) - 0.9}
+    ]
+    
+    bounds = [(0.2, 1.0) for _ in range(5)]
+    
+    # Generate Pareto frontier
+    pareto_solutions = []
+    for w in np.linspace(0.1, 0.9, 50):
+        result = minimize(lambda p: objective(p, w), 
+                         x0=[0.4]*5, bounds=bounds, 
+                         constraints=constraints, method='SLSQP')
+        if result.success:
+            pareto_solutions.append(result.x)
+    
+    return pareto_solutions
+\end{lstlisting}
+
+\subsection{Data Processing and Visualization}
+
+Key data preprocessing and visualization functions used throughout the analysis.

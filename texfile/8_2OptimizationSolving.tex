@@ -1,1 +1,67 @@
-% 优化求解过程
+\subsection{Optimization Solution Process}
+
+\subsubsection{Pareto Frontier Generation}
+
+We employ the weighted sum method to generate the Pareto frontier with weights $w \in [0.1, 0.9]$:
+
+\begin{equation}
+\min_{p} \quad w \cdot f_1^{norm}(p) + (1-w) \cdot f_2^{norm}(p)
+\end{equation}
+
+where objective functions are normalized as:
+\begin{align}
+f_1^{norm}(p) &= \frac{f_1(p)}{400} \\
+f_2^{norm}(p) &= f_2(p) \times 10
+\end{align}
+
+\subsubsection{Solution Algorithm}
+
+We use Sequential Least Squares Programming (SLSQP) algorithm to solve the constrained optimization problem:
+
+\begin{algorithm}[h]
+\caption{Pareto Frontier Generation}
+\begin{algorithmic}[1]
+\STATE Initialize weight vector $W = \{w_1, w_2, ..., w_{50}\}$
+\STATE Set price bounds: $p_i \in [0.20, 1.00]$
+\FOR{each weight $w_k \in W$}
+    \STATE Define objective: $f(p) = w_k f_1^{norm}(p) + (1-w_k) f_2^{norm}(p)$
+    \STATE Set constraints: affordability, food security
+    \STATE Solve: $p^* = \arg\min f(p)$ subject to constraints
+    \IF{solution feasible}
+        \STATE Add $(f_1(p^*), f_2(p^*))$ to Pareto set
+    \ENDIF
+\ENDFOR
+\STATE Return Pareto frontier
+\end{algorithmic}
+\end{algorithm}
+
+\subsubsection{Knee Point Selection}
+
+We select the knee point from the Pareto frontier as the optimal solution:
+
+\begin{equation}
+p^{optimal} = \arg\min_{p \in P} \sqrt{(f_1^{norm}(p))^2 + (f_2^{norm}(p))^2}
+\end{equation}
+
+where $P$ is the set of Pareto optimal solutions.
+
+\subsubsection{Optimization Results}
+
+The optimization process generates 50 Pareto optimal solutions. Performance metrics for the knee point solution:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|}
+\hline
+\textbf{Performance Metric} & \textbf{Value} \\
+\hline
+Water Savings & 11.4\% \\
+Farmer Income Impact & 0.0\% \\
+Constraint Satisfaction & All Satisfied \\
+Affordability Margin & 5.5\% \\
+Food Security Margin & 3.2\% \\
+\hline
+\end{tabular}
+\caption{Optimal Solution Performance Metrics}
+\label{tab:optimization_results}
+\end{table}

@@ -1,0 +1,21 @@
+=== Water Price Elasticity Analysis Report ===
+
+INDUSTRIAL SECTOR RESULTS:
+Price Elasticity: 0.0050
+Standard Error: 0.0033
+P-value: 0.1601
+95% Confidence Interval: [-0.0022, 0.0122]
+R-squared: 0.9996
+
+RESIDENTIAL SECTOR RESULTS:
+Price Elasticity: 0.0312
+Income Elasticity: 0.3469
+Price Standard Error: 0.0262
+Price P-value: 0.2555
+Income P-value: 0.0000
+R-squared: 0.9972
+
+COMPARISON RESULTS:
+More price-sensitive sector: No significant difference
+Difference in absolute elasticity: -0.0262
+Statistical significance of difference: 0.3214

@@ -1,17 +1,10 @@
 \documentclass{mcmthesis}
-% 关键修改：CTeX = true 启用中文支持
-\mcmsetup{CTeX = true, tcn = {112233}, problem = \textcolor{red}{A},
+% MCM/ICM 2025 Configuration
+\mcmsetup{CTeX = true, tcn = {112233}, problem = A,
           sheet = true, titleinsheet = true, keywordsinsheet = true,
           titlepage = false, abstract = false}
 
-% 必要的中文支持包
-\usepackage{xeCJK}
-\usepackage{fontspec}
-\setCJKmainfont{SimSun} % Windows系统
-% \setCJKmainfont{Songti SC} % macOS系统
-% \setCJKmainfont{Noto Serif CJK SC} % Linux/跨平台
-
-% 英文字体设置
+% English font settings
 \usepackage{newtxtext}
 \usepackage{newtxmath}
 \usepackage[style=apa,backend=biber]{biblatex}
@@ -20,96 +13,94 @@
 \setlength{\cftbeforesecskip}{6pt}
 \renewcommand{\contentsname}{\hspace*{\fill}\Large\bfseries Contents \hspace*{\fill}}
 
-% 标题要宏大且具体，体现方法论
-\title{Water Future: A Hybrid Framework for Prediction, Attribution, and Pricing Strategy}
+% Algorithm packages
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+% Title should be comprehensive and methodology-focused
+\title{Integrated Water Resource Management: A Multi-Objective Framework for Pricing Strategy and Demand Forecasting}
 \date{\today}
 
-%% 正文开始 ============================================================================================
+%% Document begins ============================================================================================
 
 \begin{document}
 
-    % 1. 摘要 (Summary Sheet)
-    % 核心得分点：在此处加粗展示Q1的预测值和Q4的定价方案
+    % 1. Summary Sheet
+    % Key scoring points: Highlight Q1 predictions and Q4 pricing scheme
     \input{texfile/1abstract}
 
     \newpage
-    \maketitle  % 生成 Summary Sheet
-    \tableofcontents  % 生成目录
+    \maketitle  % Generate Summary Sheet
+    \tableofcontents  % Generate table of contents
     \newpage
 
-    % 2. 问题重述与背景 (Problem Restatement)
-    \section{问题重述与背景分析}
-    \input{texfile/2_1ProblemRestatement}       % 流程图放在这里
-    \input{texfile/2_2BackgroundAnalysis}       % 文献综述：前人是怎么研究水价的
+    % 2. Problem Restatement and Background
+    \section{Problem Restatement and Background Analysis}
+    \input{texfile/2_1ProblemRestatement}       % Flowchart goes here
+    \input{texfile/2_2BackgroundAnalysis}       % Literature review: how others studied water pricing
 
-    % 3. 数据全景与预处理 (Data - 采纳Qwen建议，统一处理)
-    \section{数据全景与预处理}
-    \input{texfile/3_1DataSources}              % 数据来源表 (Official Statistics etc.)
-    \input{texfile/3_2DataCleaning}             % 缺失值插补 (Interpolation/KNN)
-    \input{texfile/3_3ExploratoryAnalysis}      % 核心图表：相关性热力图 + 历史趋势图
+    % 3. Data Overview and Preprocessing
+    \section{Data Overview and Preprocessing}
+    \input{texfile/3_1DataSources}              % Data source table (Official Statistics etc.)
+    \input{texfile/3_2DataCleaning}             % Missing value imputation (Interpolation/KNN)
+    \input{texfile/3_3ExploratoryAnalysis}      % Core charts: correlation heatmap + historical trends
 
-    % 4. 假设与符号
-    % \section{模型假设与符号说明}
+    % 4. Assumptions and Notations
     \section{Assumptions and Justifications}
     \input{texfile/4_1Assumptions}
     \section{Notations}
     \input{texfile/4_2Notations}
 
-    % ===== 问题1：预测 (Prediction) =====
-    \section{全国用水量短期预测 (2017-2021)}
-    %英文标题
-    % \section{Short-term Prediction of National Water Consumption (2017-2021)}
-    \input{texfile/5_1ModelSelection}           % 为什么用组合模型 (ARIMA+LSTM)
-    \input{texfile/5_2ModelImplementation}      % 训练过程
-    \input{texfile/5_3ResultsAndVerification}   % 【微调】直接在这里放误差图 (MAPE)，证明模型准
+    % ===== Problem 1: Prediction =====
+    \section{Short-term Water Consumption Forecasting (2017-2021)}
+    \input{texfile/5_1ModelSelection}           % Why use ensemble model (ARIMA+LSTM)
+    \input{texfile/5_2ModelImplementation}      % Training process
+    \input{texfile/5_3ResultsAndVerification}   % Error plots (MAPE) to prove model accuracy
 
-    % ===== 问题2：归因 (Attribution) =====
-    \section{用水量影响因素识别}
-    %英文标题
-    % \section{Identification of Key Factors Influencing Water Consumption}
-    \input{texfile/6_1FeatureSelectionModel}    % 随机森林 / Lasso回归
-    \input{texfile/6_2FactorRanking}            % 给出排名：人口 > GDP > ...
-    \input{texfile/6_3Interpretation}           % 经济学解释
-    % \input{texfile/6_IdentificationOfKeyFactors}
+    % ===== Problem 2: Attribution =====
+    \section{Identification of Key Factors Influencing Water Consumption}
+    \input{texfile/6_1FeatureSelectionModel}    % Random Forest / Lasso regression
+    \input{texfile/6_2FactorRanking}            % Ranking: Population > GDP > ...
+    \input{texfile/6_3Interpretation}           % Economic interpretation
 
-    % ===== 问题3：机制 (Mechanism) - 采纳Qwen建议，分开建模 =====
-    \section{水价弹性分析：工业 vs 居民}
-    \input{texfile/7_1IndustrialElasticity}     % 工业：重点谈效率倒逼机制
-    \input{texfile/7_2ResidentialElasticity}    % 居民：重点谈收入占比 (Affordability)
-    \input{texfile/7_3ComparativeDiscussion}    % 对比：谁对价格更敏感？
+    % ===== Problem 3: Mechanism - Separate modeling approach =====
+    \section{Water Price Elasticity Analysis: Industrial vs Residential}
+    \input{texfile/7_1IndustrialElasticity}     % Industrial: focus on efficiency-forcing mechanism
+    \input{texfile/7_2ResidentialElasticity}    % Residential: focus on income ratio (Affordability)
+    \input{texfile/7_3ComparativeDiscussion}    % Comparison: who is more price-sensitive?
 
-    % ===== 问题4：策略 (Strategy) =====
-    \section{农业用水最优定价策略}
-    \input{texfile/8_1MultiObjectiveModel}      % 目标：节水 vs 农民收入
-    \input{texfile/8_2OptimizationSolving}      % 求解 Pareto 前沿
-    \input{texfile/8_3FinalPricingScheme}       % 最终产出：阶梯水价表 (Tiered Pricing)
+    % ===== Problem 4: Strategy =====
+    \section{Optimal Agricultural Water Pricing Strategy}
+    \input{texfile/8_1MultiObjectiveModel}      % Objective: water conservation vs farmer income
+    \input{texfile/8_2OptimizationSolving}      % Solve Pareto frontier
+    \input{texfile/8_3FinalPricingScheme}       % Final output: Tiered Pricing table
 
-    % 9. 灵敏度与稳健性 (Validation - 采纳Qwen建议，统一检验)
-    \section{敏感性分析与模型稳健性}
-    \input{texfile/9_1PriceSensitivity}         % Q4重点：如果农民变穷了，定价还合理吗？
-    \input{texfile/9_2ParameterStability}       % 模型参数波动测试
-    \input{texfile/9_3SystemRobustness}         % 极端气候下的压力测试
+    % 9. Sensitivity and Robustness Analysis
+    \section{Sensitivity Analysis and Model Robustness}
+    \input{texfile/9_1PriceSensitivity}         % Q4 focus: if farmers become poorer, is pricing still reasonable?
+    \input{texfile/9_2ParameterStability}       % Model parameter fluctuation testing
+    \input{texfile/9_3SystemRobustness}         % Stress testing under extreme climate
 
-    % 10. 评价与推广
-    \section{模型评价与推广价值}
+    % 10. Model Evaluation and Extension
+    \section{Model Evaluation and Extension Value}
     \input{texfile/10StrengthsWeaknesses}
 
-    % 11. 政策建议 (Policy - 独立成章)
-    \section{政策建议与实施路径}
-    \input{texfile/11PolicyRecommendations}     % 具体落地：补贴、技术引进、阶梯定价实施细则
+    % 11. Policy Recommendations
+    \section{Policy Recommendations and Implementation Pathways}
+    \input{texfile/11PolicyRecommendations}     % Specific implementation: subsidies, technology introduction, tiered pricing details
 
-    % 12. 参考文献
+    % 12. References
     \newpage
     \input{texfile/12Reference}
 
-    % 13. 附录
+    % 13. Appendices
     \newpage
-    \begin{appendices}enj
+    \begin{appendices}
         \input{texfile/13_1Code}
         \input{texfile/13_2ExtraTables}
     \end{appendices}
 
-    % 14. AI声明
+    % 14. AI Usage Statement
     \input{texfile/14UseAI}
 
 \end{document}

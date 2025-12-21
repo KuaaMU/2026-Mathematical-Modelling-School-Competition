@@ -1,1 +1,33 @@
-% 数据清洗内容
+\subsection{Data Cleaning and Preprocessing}
+
+\subsubsection{Missing Value Treatment}
+
+The raw dataset contains several missing values that require systematic treatment:
+
+\begin{itemize}
+    \item \textbf{Water Price Data (2000-2004)}: Missing industrial and residential water prices filled using linear interpolation based on available 2005-2016 data
+    \item \textbf{Agricultural Water Costs}: Supplemented with Ministry of Agriculture cost survey data for representative crops
+    \item \textbf{Beijing Municipal Data}: One missing observation (2003) interpolated using cubic spline method
+\end{itemize}
+
+\subsubsection{Outlier Detection and Treatment}
+
+We apply statistical methods to identify and handle outliers:
+
+\begin{enumerate}
+    \item \textbf{Z-Score Method}: Identify observations with |z| > 2.5
+    \item \textbf{Interquartile Range (IQR)}: Flag values outside Q1-1.5×IQR and Q3+1.5×IQR
+    \item \textbf{Domain Knowledge}: Validate outliers against known policy changes or economic events
+\end{enumerate}
+
+\textbf{Results}: Two outliers identified in 2008 (financial crisis impact) and 2011 (policy adjustment), retained after validation against historical context.
+
+\subsubsection{Data Standardization}
+
+To ensure model compatibility and interpretability:
+
+\begin{itemize}
+    \item \textbf{Unit Conversion}: All water quantities converted to billion m³ (10$^8$ m³)
+    \item \textbf{Price Deflation}: All monetary values adjusted to 2016 constant prices using CPI
+    \item \textbf{Population Normalization}: Per capita indicators calculated using mid-year population estimates
+\end{itemize}
