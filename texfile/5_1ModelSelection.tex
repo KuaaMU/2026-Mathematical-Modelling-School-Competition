@@ -1,43 +1,27 @@
 % ========================================
-% 文件：5_1ModelSelection.tex
-% 模型选择 (Model Selection)
-% 重点：阐述为何放弃深度学习和GM(1,1)，选择ARIMA+Poly组合
+% Combined Model Selection and Implementation
 % ========================================
 
-\subsection{Model Selection Strategy}
+\subsection{Ensemble Model Development}
 
-The task of predicting national water consumption for 2017-2021 presents a specific challenge: \textbf{Small Sample Size}. The provided dataset covers the period from 2000 to 2016, containing only 17 data points. This constraint fundamentally dictates our model selection strategy.
+Given the small sample size ($N=17$, 2000-2016) and non-exponential trend characteristics, we developed a weighted ensemble combining ARIMA and polynomial regression models.
 
-\subsubsection{Data Characteristic Analysis}
-Before establishing the model, we analyzed the statistical characteristics of the historical water consumption data:
-\begin{itemize}
-    \item \textbf{Small Sample Size ($N=17$):} Deep learning models such as LSTM (Long Short-Term Memory) or Transformers typically require large datasets to converge and avoid overfitting. Therefore, statistical models and regression analyses are more suitable candidates.
-    \item \textbf{Non-Exponential Trend:} The data shows a rapid increase in the early 2000s but enters a "saturation" or "plateau" phase after 2013. The traditional GM(1,1) Grey Prediction model assumes exponential growth, which contradicts the recent stabilization trend of water usage.
-    \item \textbf{Autocorrelation:} Water consumption is a time-series variable with inertia; current usage is highly correlated with previous years.
-\end{itemize}
+\subsubsection{Model Selection Rationale}
+The data exhibits: (1) Small sample size unsuitable for deep learning, (2) Non-exponential "saturation" trend after 2013, and (3) Strong autocorrelation. We selected ARIMA(1,1,0) for capturing temporal dependencies and quadratic polynomial regression for the global trend.
 
-\subsubsection{Candidate Models Assessment}
-Based on the analysis above, we evaluated three potential modeling approaches:
+% \begin{figure}[h]
+% \centering
+% \includegraphics[width=0.8\textwidth]{code/Q1/question1/results/forecast_validation_final.png}
+% \caption{Historical Water Consumption Trend and Model Validation}
+% \label{fig:forecast_validation}
+% \end{figure}
 
-\begin{enumerate}
-    \item \textbf{GM(1,1) Grey Prediction:}
-    \begin{itemize}
-        \item \textit{Pros:} Suitable for small samples with poor information.
-        \item \textit{Cons:} Assumes monotonic exponential growth. Preliminary tests showed it tends to overestimate the stable trend observed after 2013. \textbf{(Discarded)}
-    \end{itemize}
+\subsubsection{Mathematical Framework}
 
-    \item \textbf{ARIMA (AutoRegressive Integrated Moving Average):}
-    \begin{itemize}
-        \item \textit{Pros:} Excellent at capturing the autocorrelation and stationary properties of time series after differencing.
-        \item \textit{Cons:} May struggle to capture global non-linear trends if the series is too short. \textbf{(Selected as Core Component)}
-    \end{itemize}
+We developed a weighted ensemble combining ARIMA(1,1,0) and quadratic polynomial regression:
 
-    \item \textbf{Polynomial Regression (Degree 2):}
-    \begin{itemize}
-        \item \textit{Pros:} Capable of fitting the non-linear "saturation" curve (an inverted U-shape or flattening curve).
-        \item \textit{Cons:} Extrapolation risk if the degree is too high. \textbf{(Selected for Trend Correction)}
-    \end{itemize}
-\end{enumerate}
+**ARIMA Model**: Captures short-term fluctuations through autoregressive structure
+**Polynomial Model**: Captures long-term saturation trend  
+**Ensemble Prediction**: $\hat{Y}_{final} = 0.70 \cdot \hat{Y}_{ARIMA} + 0.30 \cdot \hat{Y}_{Poly}$
 
-\subsubsection{The Ensemble Strategy}
-To balance the capability of capturing local fluctuations (ARIMA) and the global trend (Polynomial Regression), we propose a \textbf{Weighted Ensemble Model}. By combining these two distinct mathematical logic systems, we aim to minimize the variance of the prediction and improve robustness against potential outliers.
+Weights were optimized based on validation performance (2013-2016), prioritizing ARIMA's stability while retaining polynomial's trend-capturing capability.

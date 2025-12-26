@@ -1,41 +1,19 @@
 \subsection{Industrial Water Price Elasticity}
 
-Industrial water price elasticity analysis employs a log-linear demand model considering dual effects of price and GDP:
+Industrial water price elasticity analysis employs a log-linear demand model:
+$$\ln(Q_{industrial}) = \alpha + \beta_1 \ln(P_{water}) + \beta_2 \ln(GDP_{industrial}) + \varepsilon$$
 
-\begin{equation}
-\ln(Q_{industrial}) = \alpha + \beta_1 \ln(P_{water}) + \beta_2 \ln(GDP_{industrial}) + \varepsilon
-\end{equation}
+\subsubsection{Key Findings}
 
-where $Q_{industrial}$ represents industrial water consumption, $P_{water}$ is industrial water price, and $GDP_{industrial}$ is industrial GDP.
+OLS estimation yields significant price elasticity of -0.495 (p<0.01), indicating elastic demand. The industrial water price elasticity demonstrates strong responsiveness to price changes, with a 10\% price increase reducing consumption by approximately 5.0\%.
 
-\subsubsection{Estimation Results}
-
-Using 2001-2016 data, ordinary least squares estimation yields:
-
-\begin{table}[h]
+\begin{figure}[h]
 \centering
-\begin{tabular}{|l|c|c|c|c|}
-\hline
-\textbf{Variable} & \textbf{Coefficient} & \textbf{Std. Error} & \textbf{P-value} & \textbf{95\% CI} \\
-\hline
-Price Elasticity & -0.495 & 0.117 & 0.001*** & [-0.747, -0.243] \\
-GDP Elasticity & 0.604 & 0.095 & 0.000*** & [0.398, 0.810] \\
-\hline
-\multicolumn{5}{|l|}{R-squared: 0.993, Adj. R-squared: 0.992} \\
-\hline
-\end{tabular}
-\caption{Industrial Water Demand Elasticity Estimation Results}
-\label{tab:industrial_elasticity}
-\end{table}
+\includegraphics[width=0.8\textwidth]{code/Q3/results/improved_elasticity_analysis.png}
+\caption{Industrial vs Residential Water Price Elasticity Analysis}
+\label{fig:elasticity_analysis}
+\end{figure}
 
-\subsubsection{Economic Interpretation}
+\subsubsection{Economic Mechanisms}
 
-The industrial water price elasticity of -0.495 indicates:
-\begin{itemize}
-    \item \textbf{Elastic Demand}: Industrial water consumption is sensitive to price changes
-    \item \textbf{Efficiency-Forcing Mechanism}: Price increases incentivize firms to invest in water-saving technologies
-    \item \textbf{Technical Substitution}: Opportunities exist for water recycling and reuse technologies
-    \item \textbf{Cost Sensitivity}: Water costs significantly impact production competitiveness
-\end{itemize}
-
-Policy Implications: A 10\% increase in industrial water prices can reduce industrial water consumption by approximately 5.0\%, demonstrating significant effectiveness of price policies for industrial water conservation.
+The high industrial elasticity reflects: (1) Efficiency-forcing mechanism through technology investment, (2) Technical substitution opportunities via recycling, (3) Cost sensitivity affecting competitiveness, and (4) Market competition pressure for cost control.

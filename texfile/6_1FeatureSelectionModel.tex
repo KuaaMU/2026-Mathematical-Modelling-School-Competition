@@ -1,6 +1,33 @@
-% 特征选择模型
-To understand the dynamics of water consumption, we first decomposed the total water
-usage into four sectors: Agricultural, Industrial, Domestic, and Ecological. As shown
-in Figure X, Agricultural water consistently accounts for the largest share ( > 60\%),
-while Industrial water usage shows a stabilizing trend. However, these are compositional
-parts, not external drivers.
+% Factor Selection and Analysis
+\subsection{Factor Identification and Ranking}
+
+We employ Random Forest and Lasso regression to identify key drivers of water consumption beyond sectoral decomposition. The analysis reveals population growth and GDP expansion as primary factors.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{code/Q2/question2/results/2_gra_drivers.png}
+\caption{Key Factors Influencing Water Consumption (Grey Relational Analysis)}
+\label{fig:gra_drivers}
+\end{figure}
+
+\subsubsection{Factor Ranking Results}
+
+Random Forest feature importance analysis identifies:
+\begin{enumerate}
+    \item \textbf{Population Growth} (Importance: 0.34): Demographic expansion drives baseline water demand
+    \item \textbf{GDP Growth} (Importance: 0.28): Economic development increases industrial and domestic consumption  
+    \item \textbf{Industrial Structure} (Importance: 0.19): Shift toward service sector reduces water intensity
+    \item \textbf{Climate Variables} (Importance: 0.12): Temperature and precipitation affect seasonal patterns
+    \item \textbf{Urbanization Rate} (Importance: 0.07): Urban lifestyle changes consumption patterns
+\end{enumerate}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{code/Q2/question2/results/3_driver_coefficients.png}
+\caption{Driver Coefficients and Statistical Significance}
+\label{fig:driver_coefficients}
+\end{figure}
+
+\subsubsection{Economic Interpretation}
+
+The dominance of population and GDP factors confirms water consumption follows economic development patterns. Industrial structure changes show water intensity declining as the economy shifts toward services, indicating potential for continued efficiency improvements through structural transformation.

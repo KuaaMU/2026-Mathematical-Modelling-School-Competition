@@ -53,33 +53,32 @@
 
     % ===== Problem 1: Prediction =====
     \section{Short-term Water Consumption Forecasting (2017-2021)}
-    \input{texfile/5_1ModelSelection}           % Why use ensemble model (ARIMA+LSTM)
-    \input{texfile/5_2ModelImplementation}      % Training process
-    \input{texfile/5_3ResultsAndVerification}   % Error plots (MAPE) to prove model accuracy
+    \input{texfile/5_1ModelSelection}           % Combined model selection and implementation
+    \input{texfile/5_2ModelImplementation}      % Results and validation
 
     % ===== Problem 2: Attribution =====
     \section{Identification of Key Factors Influencing Water Consumption}
-    \input{texfile/6_1FeatureSelectionModel}    % Random Forest / Lasso regression
-    \input{texfile/6_2FactorRanking}            % Ranking: Population > GDP > ...
-    \input{texfile/6_3Interpretation}           % Economic interpretation
+    \input{texfile/6_1FeatureSelectionModel}    % Factor identification and ranking with figures
+    \input{texfile/6_2FactorRanking}            % Economic interpretation
+    \input{texfile/6_3Interpretation}
 
     % ===== Problem 3: Mechanism - Separate modeling approach =====
     \section{Water Price Elasticity Analysis: Industrial vs Residential}
-    \input{texfile/7_1IndustrialElasticity}     % Industrial: focus on efficiency-forcing mechanism
-    \input{texfile/7_2ResidentialElasticity}    % Residential: focus on income ratio (Affordability)
-    \input{texfile/7_3ComparativeDiscussion}    % Comparison: who is more price-sensitive?
+    \input{texfile/7_1IndustrialElasticity}     % Industrial elasticity with comprehensive figure
+    \input{texfile/7_2ResidentialElasticity}    % Residential elasticity (condensed)
+    \input{texfile/7_3ComparativeDiscussion}    % Policy implications
 
     % ===== Problem 4: Strategy =====
     \section{Optimal Agricultural Water Pricing Strategy}
-    \input{texfile/8_1MultiObjectiveModel}      % Objective: water conservation vs farmer income
-    \input{texfile/8_2OptimizationSolving}      % Solve Pareto frontier
-    \input{texfile/8_3FinalPricingScheme}       % Final output: Tiered Pricing table
+    \input{texfile/8_1MultiObjectiveModel}      % Multi-objective framework with figure
+    \input{texfile/8_2OptimizationSolving}      % Pareto optimization (condensed)
+    \input{texfile/8_3FinalPricingScheme}       % Implementation strategy
 
-    % 9. Sensitivity and Robustness Analysis
+    % 9. Consolidated Sensitivity Analysis
     \section{Sensitivity Analysis and Model Robustness}
-    \input{texfile/9_1PriceSensitivity}         % Q4 focus: if farmers become poorer, is pricing still reasonable?
-    \input{texfile/9_2ParameterStability}       % Model parameter fluctuation testing
-    \input{texfile/9_3SystemRobustness}         % Stress testing under extreme climate
+    \input{texfile/9_1PriceSensitivity}         % Consolidated sensitivity analysis
+    \input{texfile/9_2ParameterStability}       % (Empty - content moved to 9_1)
+    \input{texfile/9_3SystemRobustness}         % (Empty - content moved to 9_1)
 
     % 10. Model Evaluation and Extension
     \section{Model Evaluation and Extension Value}
@@ -97,7 +96,7 @@
     \newpage
     \begin{appendices}
         \input{texfile/13_1Code}
-        \input{texfile/13_2ExtraTables}
+        % \input{texfile/13_2ExtraTables}
     \end{appendices}
 
     % 14. AI Usage Statement

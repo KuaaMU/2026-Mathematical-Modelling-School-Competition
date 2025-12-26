@@ -1,33 +1,38 @@
 % ========================================
 % 文件：4_2Notations.tex
-% 符号说明 (Notations)
-% 格式严格按照用户要求
+% 符号说明 (Notations) - 简化版
 % ========================================
 
-% \section{Notations}
-% 这部分不要过页（删掉此句话）
 \begin{center}
 	\begin{tabular}{clc}
 		\toprule[1pt]
 		\makebox[0.15\textwidth][c]{\bf Symbol} & {\bf Description} & \makebox[0.15\textwidth][c]{\bf Unit}\\ [0.25cm]
 		\hline
-        %% 在此处添加符号说明 ==========================================
-        $W_{total}$ & Total national water consumption          & \quad $10^8$ m$^3$        \\[0.2cm]
-        $t$         & Time variable (Year)                      & \quad Year                \\[0.2cm]
-        $W_{agri}$  & Agricultural water consumption            & \quad $10^8$ m$^3$        \\[0.2cm]
-        $W_{ind}$   & Industrial water consumption              & \quad $10^8$ m$^3$        \\[0.2cm]
-        $P_{op}$    & Total population                          & \quad $10^4$ Persons      \\[0.2cm]
+        %% 核心变量 ==========================================
+        $Q$         & Water consumption/demand                  & \quad $10^8$ m$^3$        \\[0.2cm]
+        $P$         & Water price                               & \quad RMB/m$^3$           \\[0.2cm]
+        $t$         & Time variable                             & \quad Year                \\[0.2cm]
         $GDP$       & Gross Domestic Product                    & \quad $10^8$ RMB          \\[0.2cm]
-        $\gamma$    & Grey Relational Grade (GRA Score)         & \quad Dimensionless       \\[0.2cm]
-        $P$         & Price of water                            & \quad RMB/m$^3$           \\[0.2cm]
-        $Q$         & Quantity of water demand                  & \quad $10^8$ m$^3$        \\[0.2cm]
-        $E_d$       & Price elasticity of demand                & \quad Dimensionless       \\[0.2cm]
-        $I$         & Disposable income (per capita)            & \quad RMB                 \\[0.2cm]
-        $\hat{Y}$   & Predicted value from the model            & \quad $10^8$ m$^3$        \\[0.2cm]
+        $I$         & Per capita disposable income              & \quad RMB                 \\[0.2cm]
+        %% 弹性分析 ========================================
+        $\alpha$    & Intercept in demand model                 & \quad Dimensionless       \\[0.2cm]
+        $\beta_1$   & Price elasticity coefficient              & \quad Dimensionless       \\[0.2cm]
+        $\beta_2$   & Income/GDP elasticity coefficient         & \quad Dimensionless       \\[0.2cm]
+        $\varepsilon$ & Error term                              & \quad Dimensionless       \\[0.2cm]
+        %% 优化模型 ========================================
+        $p_i$       & Water price for crop $i$                  & \quad RMB/m$^3$           \\[0.2cm]
+        $Q_i$       & Water demand for crop $i$                 & \quad m$^3$/acre          \\[0.2cm]
+        $A_i$       & Area share of crop $i$                    & \quad Proportion          \\[0.2cm]
+        $S_i$       & Income share for crop $i$                 & \quad Proportion          \\[0.2cm]
+        $R_i$       & Per-acre income for crop $i$              & \quad RMB/acre            \\[0.2cm]
+        $\varepsilon_i$ & Price elasticity for crop $i$         & \quad Dimensionless       \\[0.2cm]
+        $f_1, f_2$  & Objective functions (conservation, welfare) & \quad Various           \\[0.2cm]
+        $w$         & Weight parameter in optimization          & \quad Dimensionless       \\[0.2cm]
+        %% 统计指标 ========================================
+        $\hat{Y}$   & Predicted value                           & \quad $10^8$ m$^3$        \\[0.2cm]
         $MAPE$      & Mean Absolute Percentage Error            & \quad \%                  \\[0.2cm]
-        $\epsilon$  & Random error term / Residual              & \quad N/A                 \\[0.2cm]
         %% 符号说明闭包===================================================
 		\bottomrule[1pt]
 	\end{tabular}
-	\par \vspace{0.5em} \noindent Note: Undefined variables are defined where they first appear.
+	\par \vspace{0.5em} \noindent Note: Subscripts indicate sector (industrial, residential, agricultural) or crop type.
 \end{center}

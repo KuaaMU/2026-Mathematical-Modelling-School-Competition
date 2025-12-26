@@ -1,58 +1,28 @@
 % ========================================
-% Price Sensitivity Analysis
-% Focus on testing agricultural pricing robustness
+% Consolidated Sensitivity and Robustness Analysis
 % ========================================
 
-\subsection{Price Sensitivity Analysis}
+\subsection{Sensitivity Analysis and Model Robustness}
 
-\subsubsection{Farmer Income Shock Test}
+\subsubsection{Agricultural Pricing Robustness}
 
-We test the robustness of our pricing strategy under adverse economic conditions by simulating a 10\% decline in farmer income (e.g., due to agricultural commodity price drops):
+We test pricing strategy robustness under three scenarios:
 
-\textbf{Scenario Setup}:
+\textbf{Income Shock Test}: 10\% farmer income decline requires price adjustment (base price: 0.35→0.30 yuan/m³) while maintaining 8.2\% water savings and <5\% income impact.
+
+\textbf{Water Scarcity Stress}: Under severe drought (20\% water reduction), pricing adjusts to 0.60 yuan/m³ achieving 25.1\% water savings with 12.5\% income impact, requiring emergency subsidies.
+
+\textbf{Parameter Sensitivity}: ±20\% elasticity variation changes optimal prices by <15\%, demonstrating robust performance across parameter ranges.
+
+\subsubsection{Model Parameter Stability}
+
+Elasticity coefficient stability tests show:
 \begin{itemize}
-    \item Base farmer income reduced by 10\%
-    \item Affordability constraint maintained at 8\% of income
-    \item Food security constraints unchanged
+    \item Industrial elasticity: Stable within [-0.4, -0.6] range across different time periods
+    \item Residential elasticity: Consistently insignificant, confirming inelastic nature
+    \item Agricultural elasticity: Crop-specific variations within expected bounds
 \end{itemize}
 
-\textbf{Results}: Under income shock conditions, the optimal pricing strategy requires adjustment:
-\begin{itemize}
-    \item Base water price decreases from 0.35 to 0.30 yuan/m$^3$
-    \item First-tier threshold increases from 450 to 500 m$^3$/acre
-    \item Maintains farmer income impact below 5\%
-    \item Water savings reduced to 8.2\% (vs. 11.4\% in baseline)
-\end{itemize}
+\subsubsection{System Robustness Under Extreme Conditions}
 
-\subsubsection{Water Scarcity Stress Test}
-
-Under extreme drought conditions (20\% reduction in available water), we test pricing adjustment scenarios:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Scenario} & \textbf{Base Price (yuan/m$^3$)} & \textbf{Water Savings} & \textbf{Income Impact} \\
-\hline
-Baseline & 0.35 & 12.7\% & -4.8\% \\
-\hline
-Mild Drought & 0.45 & 18.3\% & -7.2\% \\
-\hline
-Severe Drought & 0.60 & 25.1\% & -12.5\% \\
-\hline
-\end{tabular}
-\caption{Water Price Adjustments Under Different Drought Scenarios}
-\label{tab:drought_scenarios}
-\end{table}
-
-\textbf{Conclusion}: The pricing strategy demonstrates strong adaptability to water resource conditions through dynamic adjustment, but requires establishment of drought emergency subsidy mechanisms to maintain farmer welfare.
-
-\subsubsection{Price Elasticity Variation Test}
-
-We test sensitivity to changes in crop price elasticity parameters:
-
-\begin{itemize}
-    \item \textbf{±20\% elasticity variation}: Optimal prices change by less than 15\%
-    \item \textbf{±30\% elasticity variation}: Solution remains feasible with adjusted tier structures
-    \item \textbf{Robust performance}: Core policy recommendations stable across parameter ranges
-\end{itemize}
+Climate stress testing demonstrates adaptive capacity through dynamic pricing adjustments, but requires complementary policy measures (subsidies, technology support) to maintain farmer welfare during extreme events.

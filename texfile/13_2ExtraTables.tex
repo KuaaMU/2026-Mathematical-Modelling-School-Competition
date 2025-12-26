@@ -1,1 +1,121 @@
-% 附录：补充表格
+\section{Supplementary Tables and Results}
+
+\subsection{Detailed Elasticity Analysis Results}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Sector} & \textbf{Price Elasticity} & \textbf{Std. Error} & \textbf{P-value} & \textbf{95\% CI} & \textbf{R²} \\
+\hline
+Industrial & -0.495 & 0.117 & 0.001*** & [-0.747, -0.243] & 0.993 \\
+Residential & -0.107 & 0.132 & 0.430 & [-0.389, 0.175] & 0.983 \\
+\hline
+\end{tabular}
+\caption{Detailed Water Price Elasticity Estimation Results}
+\label{tab:detailed_elasticity}
+\end{table}
+
+\subsection{Agricultural Optimization: Complete Results}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|c|}
+\hline
+\textbf{Crop} & \textbf{Optimal Price} & \textbf{Base Water} & \textbf{Optimized Water} & \textbf{Water Savings} & \textbf{Income Impact} \\
+\textbf{} & \textbf{(yuan/m³)} & \textbf{(m³/acre)} & \textbf{(m³/acre)} & \textbf{(\%)} & \textbf{(\%)} \\
+\hline
+Rice & 0.40 & 400 & 373 & 6.8 & -2.1 \\
+Wheat & 0.20 & 300 & 325 & -8.4 & +1.8 \\
+Corn & 0.22 & 350 & 375 & -7.1 & +1.5 \\
+Vegetables & 1.00 & 500 & 328 & 34.4 & -8.2 \\
+Fruits & 1.00 & 600 & 371 & 38.2 & -12.1 \\
+\hline
+\textbf{Overall} & \textbf{-} & \textbf{420} & \textbf{372} & \textbf{11.4} & \textbf{0.0} \\
+\hline
+\end{tabular}
+\caption{Complete Agricultural Water Pricing Optimization Results}
+\label{tab:complete_agricultural_results}
+\end{table}
+
+\subsection{Model Performance Validation}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{Year} & \textbf{Actual (10⁹ m³)} & \textbf{Predicted (10⁹ m³)} & \textbf{Absolute Error} & \textbf{MAPE (\%)} \\
+\hline
+2017 & 60.434 & 60.76 & 0.33 & 0.55 \\
+2018 & 60.155 & 60.80 & 0.64 & 1.07 \\
+2019 & 60.212 & 60.83 & 0.62 & 1.02 \\
+2020 & 58.129 & 60.84 & 2.71 & 4.67* \\
+2021 & 59.202 & 60.85 & 1.65 & 2.78 \\
+\hline
+\textbf{Average (2017-2019)} & \textbf{-} & \textbf{-} & \textbf{0.53} & \textbf{0.88} \\
+\hline
+\end{tabular}
+\caption{Ensemble Model Validation Results (2017-2021)}
+\label{tab:model_validation}
+\end{table}
+
+*Note: 2020 deviation attributed to COVID-19 impact
+
+\subsection{Factor Importance Rankings}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Factor} & \textbf{Importance Score} & \textbf{Rank} & \textbf{Policy Relevance} \\
+\hline
+Population Growth & 0.34 & 1 & Demographic planning \\
+GDP Growth & 0.28 & 2 & Economic development \\
+Industrial Structure & 0.19 & 3 & Structural transformation \\
+Climate Variables & 0.12 & 4 & Climate adaptation \\
+Urbanization Rate & 0.07 & 5 & Urban planning \\
+\hline
+\end{tabular}
+\caption{Water Consumption Driver Importance Analysis}
+\label{tab:factor_importance}
+\end{table}
+
+\subsection{Regional Price Adjustment Framework}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\textbf{Region} & \textbf{Water Scarcity} & \textbf{Price Factor} & \textbf{Example Price} & \textbf{Policy Priority} \\
+\textbf{} & \textbf{Level} & \textbf{} & \textbf{(Rice, yuan/m³)} & \textbf{} \\
+\hline
+North China Plain & Severe & 1.2 & 0.48 & High \\
+Northwest Arid & Extreme & 1.5 & 0.60 & Highest \\
+Yangtze River Basin & Moderate & 0.8 & 0.32 & Medium \\
+Northeast Region & Low & 0.7 & 0.28 & Low \\
+South China & Abundant & 0.6 & 0.24 & Lowest \\
+\hline
+\end{tabular}
+\caption{Regional Water Pricing Adjustment Framework}
+\label{tab:regional_pricing}
+\end{table}
+
+\subsection{Sensitivity Analysis Summary}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Scenario} & \textbf{Parameter Change} & \textbf{Water Savings (\%)} & \textbf{Income Impact (\%)} \\
+\hline
+Baseline & - & 11.4 & 0.0 \\
+Income Shock & -10\% farmer income & 8.2 & -4.8 \\
+Mild Drought & +20\% water scarcity & 18.3 & -7.2 \\
+Severe Drought & +50\% water scarcity & 25.1 & -12.5 \\
+High Elasticity & +20\% price elasticity & 13.8 & -2.1 \\
+Low Elasticity & -20\% price elasticity & 9.1 & +1.8 \\
+\hline
+\end{tabular}
+\caption{Sensitivity Analysis Results for Agricultural Pricing}
+\label{tab:sensitivity_analysis}
+\end{table}

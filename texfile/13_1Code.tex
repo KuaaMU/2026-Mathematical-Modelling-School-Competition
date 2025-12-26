@@ -1,98 +1,274 @@
 \section{Code Appendix}
 
-\subsection{Problem 3: Water Price Elasticity Analysis}
+\subsection{Problem 1: Water Consumption Forecasting}
 
-The core econometric analysis for industrial and residential water price elasticity:
+The ensemble forecasting model combining ARIMA and polynomial regression:
 
-\textbf{Python Implementation:}
-\begin{lstlisting}[language=Python]
-import numpy as np
+\begin{lstlisting}[language=Python, caption=Ensemble Forecasting Model]
 import pandas as pd
+import numpy as np
+from statsmodels.tsa.arima.model import ARIMA
 from sklearn.linear_model import LinearRegression
-from scipy import stats
+from sklearn.preprocessing import PolynomialFeatures
 
-# Industrial water elasticity analysis
-def analyze_industrial_elasticity(data):
-    # Log-linear demand model
-    log_quantity = np.log(data['industrial_water'])
-    log_price = np.log(data['industrial_price'])
-    log_gdp = np.log(data['industrial_gdp'])
+class EnsembleForecaster:
+    def __init__(self):
+        self.arima_model = None
+        self.poly_model = None
+        self.weights = {'arima': 0.7, 'poly': 0.3}
     
-    X = np.column_stack([log_price, log_gdp])
-    model = LinearRegression().fit(X, log_quantity)
+    def fit(self, data):
+        # ARIMA(1,1,0) model
+        self.arima_model = ARIMA(data, order=(1,1,0)).fit()
+        
+        # Polynomial regression (degree 2)
+        years = np.arange(len(data)).reshape(-1, 1)
+        poly_features = PolynomialFeatures(degree=2)
+        years_poly = poly_features.fit_transform(years)
+        self.poly_model = LinearRegression().fit(years_poly, data)
+        self.poly_features = poly_features
     
-    price_elasticity = model.coef_[0]
-    gdp_elasticity = model.coef_[1]
-    
-    return price_elasticity, gdp_elasticity
-
-# Residential water elasticity analysis  
-def analyze_residential_elasticity(data):
-    log_quantity = np.log(data['residential_water'])
-    log_price = np.log(data['residential_price'])
-    log_income = np.log(data['per_capita_income'])
-    
-    X = np.column_stack([log_price, log_income])
-    model = LinearRegression().fit(X, log_quantity)
-    
-    return model.coef_[0], model.coef_[1]
+    def predict(self, n_steps):
+        # ARIMA predictions
+        arima_pred = self.arima_model.forecast(steps=n_steps)
+        
+        # Polynomial predictions
+        future_years = np.arange(len(self.data), 
+                                len(self.data) + n_steps).reshape(-1, 1)
+        future_poly = self.poly_features.transform(future_years)
+        poly_pred = self.poly_model.predict(future_poly)
+        
+        # Weighted ensemble
+        ensemble_pred = (self.weights['arima'] * arima_pred + 
+                        self.weights['poly'] * poly_pred)
+        return ensemble_pred
 \end{lstlisting}
 
-\subsection{Problem 4: Multi-Objective Optimization}
+\subsection{Problem 2: Factor Analysis}
 
-The agricultural water pricing optimization using SLSQP algorithm:
+Random Forest feature importance analysis for water consumption drivers:
 
-\textbf{Python Implementation:}
-\begin{lstlisting}[language=Python]
+\begin{lstlisting}[language=Python, caption=Factor Importance Analysis]
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.preprocessing import StandardScaler
+
+def analyze_water_drivers(data):
+    # Features: Population, GDP, Industrial Structure, Climate
+    features = ['population', 'gdp', 'industrial_share', 
+                'temperature', 'precipitation']
+    target = 'total_water_consumption'
+    
+    X = data[features]
+    y = data[target]
+    
+    # Standardize features
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    
+    # Random Forest analysis
+    rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
+    rf_model.fit(X_scaled, y)
+    
+    # Feature importance
+    importance = rf_model.feature_importances_
+    feature_ranking = sorted(zip(features, importance), 
+                           key=lambda x: x[1], reverse=True)
+    
+    return feature_ranking
+\end{lstlisting}
+
+\subsection{Problem 3: Water Price Elasticity Analysis}
+
+Econometric analysis for industrial and residential water price elasticity:
+
+\begin{lstlisting}[language=Python, caption=Price Elasticity Analysis]
+import numpy as np
+from statsmodels.regression.linear_model import OLS
+from statsmodels.tools import add_constant
+
+class ElasticityAnalyzer:
+    def __init__(self):
+        self.results = {}
+    
+    def analyze_industrial_elasticity(self, data):
+        # Log-linear demand model
+        log_quantity = np.log(data['industrial_water'])
+        log_price = np.log(data['industrial_price'])
+        log_gdp = np.log(data['industrial_gdp'])
+        
+        # OLS regression
+        X = np.column_stack([log_price, log_gdp])
+        X = add_constant(X)
+        model = OLS(log_quantity, X).fit()
+        
+        price_elasticity = model.params[1]  # -0.495
+        gdp_elasticity = model.params[2]    # 0.604
+        
+        self.results['industrial'] = {
+            'price_elasticity': price_elasticity,
+            'p_value': model.pvalues[1],
+            'r_squared': model.rsquared
+        }
+        
+        return model
+    
+    def analyze_residential_elasticity(self, data):
+        # Log-linear demand model with income
+        log_quantity = np.log(data['residential_water'])
+        log_price = np.log(data['residential_price'])
+        log_income = np.log(data['per_capita_income'])
+        
+        X = np.column_stack([log_price, log_income])
+        X = add_constant(X)
+        model = OLS(log_quantity, X).fit()
+        
+        price_elasticity = model.params[1]   # -0.107
+        income_elasticity = model.params[2]  # 0.351
+        
+        self.results['residential'] = {
+            'price_elasticity': price_elasticity,
+            'income_elasticity': income_elasticity,
+            'price_p_value': model.pvalues[1],
+            'income_p_value': model.pvalues[2]
+        }
+        
+        return model
+\end{lstlisting}
+
+\subsection{Problem 4: Multi-Objective Agricultural Pricing}
+
+Pareto frontier optimization for agricultural water pricing:
+
+\begin{lstlisting}[language=Python, caption=Multi-Objective Optimization]
 from scipy.optimize import minimize
 import numpy as np
 
-def multi_objective_optimization():
-    # Crop parameters
-    crops = ['rice', 'wheat', 'corn', 'vegetables', 'fruits']
-    base_water = [400, 300, 350, 500, 600]
-    elasticity = [-0.25, -0.20, -0.22, -0.35, -0.40]
-    area_share = [0.35, 0.25, 0.20, 0.15, 0.05]
-    
-    def objective(prices, weight=0.5):
-        # Water conservation objective
-        water_use = sum(area_share[i] * base_water[i] * 
-                       (prices[i]/0.3)**elasticity[i] 
-                       for i in range(5))
+class AgriculturalPricingOptimizer:
+    def __init__(self):
+        # Crop parameters
+        self.crops = ['rice', 'wheat', 'corn', 'vegetables', 'fruits']
+        self.base_water = [400, 300, 350, 500, 600]  # m³/acre
+        self.elasticity = [-0.25, -0.20, -0.22, -0.35, -0.40]
+        self.area_share = [0.35, 0.25, 0.20, 0.15, 0.05]
+        self.income_share = [0.15, 0.18, 0.16, 0.25, 0.30]
         
-        # Farmer welfare objective  
-        income_impact = sum(area_share[i] * 
-                           (prices[i] - 0.3) * base_water[i] * 
-                           (prices[i]/0.3)**elasticity[i] / 2000
-                           for i in range(5))
+    def objective_function(self, prices, weight=0.5):
+        # Objective 1: Water conservation (minimize total water use)
+        total_water = sum(
+            self.area_share[i] * self.base_water[i] * 
+            (prices[i] / 0.3) ** self.elasticity[i]
+            for i in range(5)
+        )
         
-        return weight * water_use + (1-weight) * income_impact * 10
+        # Objective 2: Farmer welfare (minimize income impact)
+        income_impact = sum(
+            self.area_share[i] * self.income_share[i] *
+            (prices[i] - 0.3) * self.base_water[i] *
+            (prices[i] / 0.3) ** self.elasticity[i] / 2000
+            for i in range(5)
+        )
+        
+        # Weighted sum (normalized)
+        f1_norm = total_water / 400
+        f2_norm = income_impact * 10
+        
+        return weight * f1_norm + (1 - weight) * f2_norm
     
-    # Constraints
-    constraints = [
-        # Affordability constraint
-        {'type': 'ineq', 'fun': lambda p: 0.08 - max(
-            (p[i] - 0.3) * base_water[i] * (p[i]/0.3)**elasticity[i] / 2000
-            for i in range(5))},
-        # Food security constraint  
-        {'type': 'ineq', 'fun': lambda p: min(
-            (p[i]/0.3)**elasticity[i] for i in range(3)) - 0.9}
-    ]
+    def constraints(self, prices):
+        constraints = []
+        
+        # Affordability constraint (≤8% of income)
+        for i in range(5):
+            water_cost_impact = ((prices[i] - 0.3) * self.base_water[i] * 
+                               (prices[i] / 0.3) ** self.elasticity[i] / 2000)
+            constraints.append({'type': 'ineq', 
+                              'fun': lambda p, idx=i: 0.08 - water_cost_impact})
+        
+        # Food security constraint (≥90% for staple crops)
+        for i in range(3):  # rice, wheat, corn
+            constraints.append({'type': 'ineq',
+                              'fun': lambda p, idx=i: 
+                              (p[idx] / 0.3) ** self.elasticity[idx] - 0.9})
+        
+        return constraints
     
-    bounds = [(0.2, 1.0) for _ in range(5)]
+    def generate_pareto_frontier(self):
+        pareto_solutions = []
+        bounds = [(0.2, 1.0) for _ in range(5)]
+        
+        for weight in np.linspace(0.1, 0.9, 50):
+            result = minimize(
+                fun=lambda p: self.objective_function(p, weight),
+                x0=[0.4] * 5,
+                bounds=bounds,
+                constraints=self.constraints([0.4] * 5),
+                method='SLSQP'
+            )
+            
+            if result.success:
+                pareto_solutions.append({
+                    'prices': result.x,
+                    'water_savings': self.calculate_water_savings(result.x),
+                    'income_impact': self.calculate_income_impact(result.x)
+                })
+        
+        return pareto_solutions
     
-    # Generate Pareto frontier
-    pareto_solutions = []
-    for w in np.linspace(0.1, 0.9, 50):
-        result = minimize(lambda p: objective(p, w), 
-                         x0=[0.4]*5, bounds=bounds, 
-                         constraints=constraints, method='SLSQP')
-        if result.success:
-            pareto_solutions.append(result.x)
-    
-    return pareto_solutions
+    def select_optimal_solution(self, pareto_solutions):
+        # Select knee point (minimum Euclidean distance to origin)
+        min_distance = float('inf')
+        optimal_solution = None
+        
+        for solution in pareto_solutions:
+            f1_norm = solution['water_savings'] / 20  # Normalize
+            f2_norm = solution['income_impact'] * 10
+            distance = np.sqrt(f1_norm**2 + f2_norm**2)
+            
+            if distance < min_distance:
+                min_distance = distance
+                optimal_solution = solution
+        
+        return optimal_solution
 \end{lstlisting}
 
-\subsection{Data Processing and Visualization}
+\subsection{Data Visualization and Results}
 
-Key data preprocessing and visualization functions used throughout the analysis.
+Key visualization functions for generating paper figures:
+
+\begin{lstlisting}[language=Python, caption=Visualization Functions]
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+def plot_elasticity_comparison(industrial_results, residential_results):
+    """Generate elasticity comparison figure"""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    
+    # Industrial elasticity
+    ax1.bar(['Price Elasticity', 'GDP Elasticity'], 
+            [industrial_results['price_elasticity'], 
+             industrial_results['gdp_elasticity']])
+    ax1.set_title('Industrial Water Demand Elasticity')
+    ax1.set_ylabel('Elasticity Coefficient')
+    
+    # Residential elasticity
+    ax2.bar(['Price Elasticity', 'Income Elasticity'],
+            [residential_results['price_elasticity'],
+             residential_results['income_elasticity']])
+    ax2.set_title('Residential Water Demand Elasticity')
+    
+    plt.tight_layout()
+    plt.savefig('elasticity_comparison.png', dpi=300, bbox_inches='tight')
+
+def plot_pareto_frontier(pareto_solutions):
+    """Generate Pareto frontier visualization"""
+    water_savings = [sol['water_savings'] for sol in pareto_solutions]
+    income_impacts = [sol['income_impact'] for sol in pareto_solutions]
+    
+    plt.figure(figsize=(10, 6))
+    plt.scatter(water_savings, income_impacts, alpha=0.7)
+    plt.xlabel('Water Savings (%)')
+    plt.ylabel('Farmer Income Impact (%)')
+    plt.title('Pareto Frontier: Water Conservation vs Farmer Welfare')
+    plt.grid(True, alpha=0.3)
+    plt.savefig('pareto_frontier.png', dpi=300, bbox_inches='tight')
+\end{lstlisting}

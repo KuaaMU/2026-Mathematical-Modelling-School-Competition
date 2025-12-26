@@ -1,92 +1,35 @@
-\subsection{Final Pricing Scheme}
+\subsection{Implementation Strategy and Expected Outcomes}
 
 \subsubsection{Optimal Price Structure}
 
-Based on multi-objective optimization results, we determine optimal water prices for each crop:
+The multi-objective optimization yields differentiated pricing protecting staple crops while targeting high water-consuming cash crops:
 
 \begin{table}[h]
 \centering
-\begin{tabular}{|l|c|c|c|c|}
+\begin{tabular}{|l|c|c|c|}
 \hline
-\textbf{Crop Type} & \textbf{Optimal Price} & \textbf{Base Water Use} & \textbf{Optimized Use} & \textbf{Water Savings} \\
-\textbf{} & \textbf{(yuan/m$^3$)} & \textbf{(m$^3$/acre)} & \textbf{(m$^3$/acre)} & \textbf{(\%)} \\
+\textbf{Crop Type} & \textbf{Optimal Price (yuan/m³)} & \textbf{Water Savings (\%)} & \textbf{Policy Rationale} \\
 \hline
-Rice & 0.40 & 400 & 373 & 6.8 \\
-Wheat & 0.20 & 300 & 325 & -8.4* \\
-Corn & 0.22 & 350 & 375 & -7.1* \\
-Vegetables & 1.00 & 500 & 328 & 34.4 \\
-Fruits & 1.00 & 600 & 371 & 38.2 \\
+Rice & 0.40 & 6.8 & Moderate conservation \\
+Wheat & 0.20 & -8.4* & Food security protection \\
+Corn & 0.22 & -7.1* & Food security protection \\
+Vegetables & 1.00 & 34.4 & High conservation target \\
+Fruits & 1.00 & 38.2 & High conservation target \\
 \hline
 \end{tabular}
 \caption{Optimal Agricultural Water Pricing Scheme}
 \label{tab:optimal_pricing}
 \end{table}
 
-*Note: Increased water use for staple crops due to lower prices, but still satisfies food security constraints.
+*Increased water allocation for staple crops ensures food security while overall system achieves 11.4\% water savings.
 
-\subsubsection{Tiered Pricing Structure}
-
-Implementation of tiered pricing system, using rice as example:
-
-\begin{table}[h]
+\begin{figure}[h]
 \centering
-\begin{tabular}{|c|c|c|c|}
-\hline
-\textbf{Tier} & \textbf{Usage Range (m$^3$/acre)} & \textbf{Price (yuan/m$^3$)} & \textbf{Application} \\
-\hline
-Basic Tier & 0-300 & 0.32 & Guarantee basic water needs \\
-Standard Tier & 301-450 & 0.40 & Normal production water \\
-Conservation Tier & >450 & 0.52 & Encourage water conservation \\
-\hline
-\end{tabular}
-\caption{Tiered Pricing Structure (Rice Example)}
-\label{tab:tiered_pricing}
-\end{table}
+\includegraphics[width=0.8\textwidth]{code/Q4/results/test_visualization_improvements.png}
+\caption{Agricultural Water Pricing Implementation Strategy}
+\label{fig:implementation_strategy}
+\end{figure}
 
-\subsubsection{Regional Adjustment Mechanism}
+\subsubsection{Phased Implementation}
 
-Price adjustment factors based on regional water resource endowments:
-
-\begin{table}[h]
-\centering
-\begin{tabular}{|l|c|c|}
-\hline
-\textbf{Region} & \textbf{Water Resource Status} & \textbf{Price Factor} \\
-\hline
-North China Plain & Severely water-scarce & 1.2 \\
-Yangtze River Basin & Relatively abundant & 0.8 \\
-Northwest Arid Region & Extremely water-scarce & 1.5 \\
-Northeast Region & Relatively abundant & 0.7 \\
-South China Region & Abundant & 0.6 \\
-\hline
-\end{tabular}
-\caption{Regional Price Adjustment Factors}
-\label{tab:regional_adjustment}
-\end{table}
-
-\subsubsection{Implementation Strategy}
-
-\textbf{Phased Implementation Plan}:
-\begin{enumerate}
-    \item \textbf{Pilot Phase (2025-2026)}: Select 5 provinces for pilot, prices at 70\% of optimal
-    \item \textbf{Expansion Phase (2027-2028)}: Extend nationwide, prices at 85\% of optimal
-    \item \textbf{Full Implementation (2029-2030)}: Complete implementation at optimal price levels
-\end{enumerate}
-
-\textbf{Supporting Measures}:
-\begin{itemize}
-    \item \textbf{Subsidy Mechanism}: Provide 50 yuan/acre subsidy for farmers with annual income below 10,000 yuan
-    \item \textbf{Technical Support}: Promote drip irrigation and sprinkler systems with 50\% government equipment subsidies
-    \item \textbf{Monitoring System}: Establish agricultural water metering and monitoring infrastructure
-    \item \textbf{Adjustment Mechanism}: Review and adjust price levels every 3 years based on implementation results
-\end{itemize}
-
-\subsubsection{Expected Outcomes}
-
-Anticipated implementation effects:
-\begin{itemize}
-    \item \textbf{Water Conservation}: 11.4\% reduction in total agricultural water use
-    \item \textbf{Economic Impact}: Minimal impact on farmer income (<0.1\%)
-    \item \textbf{Structural Optimization}: Significant reduction in high water-consuming cash crop irrigation
-    \item \textbf{Technology Adoption}: Promote large-scale adoption of water-saving technologies
-\end{itemize}
+Three-phase rollout (2025-2030) with gradual price increases (70\%→85\%→100\% of optimal) and supporting measures including farmer subsidies, technology promotion, and monitoring systems. Expected outcomes: 11.4\% water conservation with minimal farmer income impact.
